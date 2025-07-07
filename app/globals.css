@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  background-color: #F7F7F7;
+  background-image: 
+    linear-gradient(90deg, rgba(139, 206, 247, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(139, 206, 247, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #232121;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.desktop-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Welcome Text - Center */
+.welcome-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.welcome-text {
+  font-size: 64px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.welcome-text:hover {
+  font-weight: 600;
+  transform: scale(1.05);
+}
+
+.portfolio-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.portfolio-text:hover {
+  font-weight: 600;
+  transform: scale(1.05);
+}
+
+/* Sticky Note - Top Left */
+.sticky-note-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.sticky-note {
+  background-color: #FCF4A7;
+  padding: 16px;
+  width: 250px;
+  min-height: 280px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sticky-header {
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+
+.sticky-list {
+  list-style: none;
+}
+
+.sticky-list li {
+  margin-bottom: 4px;
+  position: relative;
+  padding-left: 4px;
+}
+
+.sticky-list li:nth-child(3),
+.sticky-list li:nth-child(7) {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Folders - Right Side */
+.folders-container {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.folder-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.folder-item:hover {
+  transform: scale(1.05);
+}
+
+.folder-icon {
+  width: 64px;
+  height: 64px;
+  background-color: #8BCEF7;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.folder-icon::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 8px;
+  width: 20px;
+  height: 8px;
+  background-color: #8BCEF7;
+  border-radius: 4px 4px 0 0;
+}
+
+.folder-label {
+  font-size: 12px;
+  text-align: center;
+  max-width: 80px;
+  line-height: 1.2;
+}
+
+/* Files - Bottom Left */
+.files-container {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  display: flex;
+  gap: 30px;
+}
+
+.file-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.file-item:hover {
+  transform: scale(1.05);
+}
+
+.file-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.pdf-icon {
+  background-color: #ff4757;
+  position: relative;
+}
+
+.pdf-icon::after {
+  content: 'PDF';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+.folder-icon-small {
+  background-color: #8BCEF7;
+  position: relative;
+}
+
+.folder-icon-small::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 6px;
+  width: 14px;
+  height: 6px;
+  background-color: #8BCEF7;
+  border-radius: 3px 3px 0 0;
+}
+
+.file-label {
+  font-size: 11px;
+  text-align: center;
+  max-width: 60px;
+  line-height: 1.2;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .desktop-container {
+    padding: 10px;
+  }
+  
+  .welcome-text {
+    font-size: 32px;
+  }
+  
+  .portfolio-text {
+    font-size: 32px;
+  }
+  
+  .folders-container {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 15px;
+  }
+  
+  .files-container {
+    position: static;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .sticky-note-container {
+    position: static;
+    margin-bottom: 20px;
+  }
+}
