@@ -65,7 +65,7 @@ const Dock = () => {
     {
       id: 'linkedin',
       label: 'LinkedIn',
-      icon: '/icons/linkedin.png',
+      icon: '/icons/linkedIn.png',
       action: () => {
         window.open('https://linkedin.com/in/amandaputriapr', '_blank');
       }
