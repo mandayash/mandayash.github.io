@@ -110,9 +110,9 @@ const Dock = () => {
               damping: 20
             }}
           >
-            <div className="w-16 h-16 flex items-center justify-center text-2xl bg-white/40 rounded-xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
+            <div className="w-12 h-12 flex items-center justify-center text-2xl bg-white/40 rounded-xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
               {item.icon.startsWith('/') ? (
-                <img src={item.icon} alt={item.label} className="w-16 h-16" draggable={false} />
+                <img src={item.icon} alt={item.label} className="w-12 h-12" draggable={false} />
               ) : (
                 item.icon
               )}

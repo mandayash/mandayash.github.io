@@ -124,11 +124,11 @@ const AboutMeFolder = () => {
         className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105 relative"
         onClick={() => setShowAboutModal(true)}
       >
-        <div className="w-20 h-20 mb-2 relative flex items-center justify-center">
+        <div className="w-16 h-16 mb-2 relative flex items-center justify-center">
           <img
             src="/icons/folder.png"
             alt="Folder Icon"
-            className="w-20 h-20"
+            className="w-16 h-16"
             draggable={false}
           />
         </div>
