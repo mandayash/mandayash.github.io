@@ -14,10 +14,17 @@ module.exports = {
         'sticky-yellow': '#FCF4A7',
       },
       fontFamily: {
-        'sf': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'sans-serif'],
+        'sf': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'sans-serif'],
         'garamond': ['EB Garamond', 'serif'],
-        'lazy': ['Lazy Script', 'cursive'],
+        'lazy': ['Lazy Script', 'cursive'], // Add this line
       },
+      backgroundImage: {
+        'grid-pattern': `linear-gradient(90deg, rgba(139, 206, 247, 0.1) 1px, transparent 1px),
+                        linear-gradient(rgba(139, 206, 247, 0.1) 1px, transparent 1px)`,
+      },
+      backgroundSize: {
+        'grid': '24px 24px',
+      }
     },
   },
   plugins: [],
