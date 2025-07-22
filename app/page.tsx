@@ -1,11 +1,18 @@
+"use client";
+import { useRef } from 'react';
 import Dock from './components/Dock';
 import AboutMeFolder from './components/AboutMeFolder';
 import { BlurIn } from './components/BlurIn';
-import VariableFontAndCursor from "./VariableFontAndCursor";
+import VariableFontText from './components/variable-font-and-cursor'
+
+
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
   return (
-    <main className="relative w-screen h-screen overflow-hidden bg-grid">
+    <main
+     ref={containerRef}
+     className="relative w-screen h-screen overflow-hidden bg-grid">
       {/* Sticky Note - Top Left */}
       <div className="absolute top-5 left-5">
         <div className="bg-sticky-yellow p-2 w-[270px] min-h-40 rounded-sm shadow-lg transform -rotate-2 font-lazy text-base leading-relaxed">
@@ -27,10 +34,17 @@ export default function Home() {
           welcome to my
         </h1>
         <BlurIn>
-        <span className="text-8xl md:text-12xl italic text-text-primary font-garamond transition-all duration-300 hover:font-semibold hover:scale-105">
-          portfolio.
-        </span>
-         </BlurIn>
+          {/* Replace static span with VariableFontText */}
+          <VariableFontText
+            label="portfolio."
+            className="text-8xl md:text-12xl italic text-text-primary font-garamond inline-block cursor-none"
+            fontVariationMapping={{
+              x: { name: "wght", min: 400, max: 800 }, // Weight variation
+              y: { name: "slnt", min: 0, max: -15 },   // Slant variation (for italic)
+            }}
+            containerRef={containerRef}
+          />
+        </BlurIn>
       </div>
 
       {/* Folder Icons - Right Side */}
