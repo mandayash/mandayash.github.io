@@ -1,6 +1,7 @@
 import Dock from './components/Dock';
 import AboutMeFolder from './components/AboutMeFolder';
 import { BlurIn } from './components/BlurIn';
+import VariableFontAndCursor from "./VariableFontAndCursor";
 
 export default function Home() {
   return (
