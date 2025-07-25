@@ -210,7 +210,7 @@ const AboutMeSection = () => {
     spotify: {
       x: 680,
       y: 400,
-      width: 350,
+      width: 340,
       height: 280,
       zIndex: 4,
       isMinimized: false
