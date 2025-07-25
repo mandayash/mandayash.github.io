@@ -15,6 +15,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Amanda's Portfolio",
   description: "A showcase of Amanda's work and projects",
+  // Tambahkan icons configuration
+  icons: {
+    icon: '/icons/ava.png',
+    shortcut: '/icons/ava.png',
+    apple: '/icons/ava.png',
+  },
 };
 
 export default function RootLayout({
