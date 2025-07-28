@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import  { Safari }  from './magicui/safari';
 import AboutMeSection from './AboutMeSection';
 
 const AboutMeFolder = () => {

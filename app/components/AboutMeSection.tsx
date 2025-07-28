@@ -24,7 +24,6 @@ interface SafariWindowProps {
 // Draggable Safari Window Component
 const DraggableSafariWindow = ({ 
   id, 
-  title, 
   url, 
   children, 
   state, 
