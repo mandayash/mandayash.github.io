@@ -88,7 +88,7 @@ const Dock = () => {
   return (
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
       <motion.div 
-        className="flex items-end gap-4 p-4 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 shadow-lg"
+        className="flex items-end gap-2 md:gap-4 p-2 md:p-4 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 shadow-lg"
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
@@ -110,17 +110,22 @@ const Dock = () => {
               damping: 20
             }}
           >
-            <div className="w-12 h-12 flex items-center justify-center text-2xl bg-white/40 rounded-xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
+            <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-2xl bg-white/40 rounded-xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
               {item.icon.startsWith('/') ? (
-                <img src={item.icon} alt={item.label} className="w-12 h-12" draggable={false} />
+                <img 
+                  src={item.icon} 
+                  alt={item.label} 
+                  className="w-10 h-10 md:w-12 md:h-12" 
+                  draggable={false} 
+                />
               ) : (
                 item.icon
               )}
             </div>
             
-            {/* Tooltip */}
+            {/* Tooltip - Hidden on mobile */}
             <motion.div
-              className="absolute bottom-16 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+              className="hidden md:block absolute bottom-16 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
               initial={{ opacity: 0, y: 10 }}
               whileHover={{ opacity: 1, y: 0 }}
             >
