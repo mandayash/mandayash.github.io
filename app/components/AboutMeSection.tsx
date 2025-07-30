@@ -54,7 +54,9 @@ const DraggableSafariWindow = ({
   // Handle dragging
   const handleMouseDown = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('.window-controls')) return;
-    if (isMobile.current) return; // Disable dragging on mobile
+    if (isMobile.current) return; 
+
+    e.stopPropagation()
     
     setIsDragging(true);
     setDragStart({
@@ -141,22 +143,27 @@ const DraggableSafariWindow = ({
           <button 
             onClick={(e) => {
               e.stopPropagation();
-              onClose();
-            }}
-            className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-600 transition-colors"
-          />
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
               onUpdate(id, { isMinimized: true });
             }}
-            className="w-3 h-3 bg-yellow-500 rounded-full hover:bg-yellow-600 transition-colors"
+            className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-600 transition-colors"
+            aria-label="Minimize window"
           />
-          <button className="w-3 h-3 bg-green-500 rounded-full hover:bg-green-600 transition-colors" />
+          {/* Tombol kuning tanpa interaksi */}
+          <div 
+            className="w-3 h-3 bg-yellow-500 rounded-full"
+            aria-hidden="true"
+          />
+          {/* Tombol hijau tanpa interaksi */}
+          <div 
+            className="w-3 h-3 bg-green-500 rounded-full"
+            aria-hidden="true" 
+          />
         </div>
-        <div className="flex-1 text-center">
-          {title && <span className="font-medium text-xs mr-2 hidden sm:inline">{title}</span>}
-          <div className="bg-gray-200 rounded px-3 py-1 text-xs inline-block truncate max-w-[150px] sm:max-w-none">
+        <div className="flex-1 flex flex-col items-center justify-center">
+          {/* Title */}
+          {title && <span className="font-medium text-xs mb-1 hidden sm:block">{title}</span>}
+          {/* URL */}
+          <div className="bg-gray-200 rounded px-3 py-1 text-xs inline-block truncate max-w-[200px] sm:max-w-none">
             {url}
           </div>
         </div>
@@ -185,16 +192,16 @@ const DraggableSafariWindow = ({
 // Notes App Style Component
 const NotesWindow = ({ content }: { content: string }) => {
   return (
-    <div className="bg-yellow-50 h-full">
+    <div className="bg-white h-full">
       {/* Notes Header */}
       <div className="bg-yellow-100 px-4 py-2 border-b flex items-center justify-between">
-        <h3 className="font-xs text-gray-700">aboutme.txt</h3>
-        <div className="flex gap-2 text-xs text-gray-500">
+        <h3 className="font-medium text-xs text-gray-700 font-sf">aboutme.txt</h3>
+        <div className="flex gap-2 text-xs font-sf text-gray-500">
           <span>Modified: Today</span>
         </div>
       </div>
       {/* Notes Content */}
-      <div className="p-4 sm:p-6 text-sm sm:text-base leading-relaxed text-gray-700 whitespace-pre-wrap">
+      <div className="p-4 sm:p-6 text-sm sm:text-base leading-relaxed text-gray-700 whitespace-pre-wrap font-sf notes-lined-bg text-justify">
         {content}
       </div>
     </div>
@@ -202,7 +209,7 @@ const NotesWindow = ({ content }: { content: string }) => {
 };
 
 // Main About Me Section Component
-const AboutMeSection = () => {
+const AboutMeSection = ({ onClose } : { onClose: () => void }) => {
   const [isMobile, setIsMobile] = useState(false);
   
   // Check if on mobile
@@ -338,29 +345,22 @@ const AboutMeSection = () => {
     }
   };
 
-  const notesContent = `Hi! I'm Amanda, a Computer Science student with a sharp eye for 
-detail and a soft spot for bold, human-centered ideas. I craft 
-intuitive products and interfaces that simplify complexity—whether 
-it's streamlining workflows, visualizing data, or making technology 
-feel less... techy.
+  const notesContent = `Hi! I'm Amanda, a 3rd year Computer Science student at Universitas Pertamina. I'm basically a code wizard who learns React.js, JavaScript, and SQL - been casting these spells for 2+ years now!
 
-Currently pursuing my studies at Universitas Pertamina, I thrive at 
-the intersection of strategy, aesthetics, and usability. Whether I'm 
-building seamless experiences or breaking the grid with experimental 
-visuals, my goal is always the same: "make it work beautifully."
+Currently pursuing my studies at Universitas Pertamina, I thrive at the intersection of strategy, aesthetics, and usability. Whether I'm building seamless experiences or breaking the grid with experimental visuals, my goal is always the same: "make it work beautifully."
 
 Fun facts:
-- 🇫🇷 Recently completed an international program in France
-- 🏆 10+ competition wins (yes, I keep count!)
-- 💻 2+ years React.js experience
-- 🎯 Currently seeking internship opportunities (Please hire me 🤩)
-- 🎵 Can't code without my Spotify playlist`;
+- Recently completed (and loved) an international program in France 🇫🇷 
+- Passionate about Software Development, Data Analysis, and Project Management
+- I am not a gamer, nor do drink coffee (I prefer tea ☕️)
+- Currently seeking internship opportunities (Please hire me 🤩)
+- Can't code without my Spotify playlist`;
 
   return (
     <div className="fixed inset-0 bg-black/30 z-50 overflow-y-auto px-4 py-6 sm:p-8">
       {/* Close button */}
       <button
-        onClick={() => window.location.reload()} // Temporary close solution
+        onClick={onClose}
         className="fixed top-4 right-4 z-[9999] bg-white/80 backdrop-blur rounded-full p-2 hover:bg-white transition-colors shadow-lg"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

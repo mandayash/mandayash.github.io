@@ -1,16 +1,26 @@
 "use client";
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface DockItem {
   id: string;
   label: string;
   icon: string;
   action: () => void;
+  hideOnMobile?: boolean; 
 }
 
 const Dock = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Deteksi perangkat mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const dockItems: DockItem[] = [
     {
@@ -44,7 +54,8 @@ const Dock = () => {
       action: () => {
         // Open Spotify or music section
         window.open('https://open.spotify.com/', '_blank');
-      }
+      },
+      hideOnMobile: true // Sembunyikan di mobile
     },
     {
       id: 'mail',
@@ -52,7 +63,8 @@ const Dock = () => {
       icon: '/icons/email.png', 
       action: () => {
         window.open('mailto:amandaputriaprill@gmail.com', '_blank');
-      }
+      },
+      hideOnMobile: true // Sembunyikan di mobile
     },
     {
       id: 'github',
@@ -60,7 +72,8 @@ const Dock = () => {
       icon: '/icons/github.png',
       action: () => {
         window.open('https://github.com/mandayash', '_blank');
-      }
+      },
+      hideOnMobile: true // Sembunyikan di mobile
     },
     {
       id: 'linkedin',
@@ -72,12 +85,15 @@ const Dock = () => {
     }
   ];
 
+  // Filter item berdasarkan ukuran layar
+  const visibleDockItems = dockItems.filter(item => !isMobile || !item.hideOnMobile);
+
   const getItemScale = (itemId: string) => {
     if (!hoveredItem) return 1;
     if (hoveredItem === itemId) return 1.5;
     
-    const hoveredIndex = dockItems.findIndex(item => item.id === hoveredItem);
-    const currentIndex = dockItems.findIndex(item => item.id === itemId);
+    const hoveredIndex = visibleDockItems.findIndex(item => item.id === hoveredItem);
+    const currentIndex = visibleDockItems.findIndex(item => item.id === itemId);
     const distance = Math.abs(hoveredIndex - currentIndex);
     
     if (distance === 1) return 1.2;
@@ -93,7 +109,7 @@ const Dock = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
       >
-        {dockItems.map((item) => (
+        {visibleDockItems.map((item) => (
           <motion.div
             key={item.id}
             className="relative group cursor-pointer"
