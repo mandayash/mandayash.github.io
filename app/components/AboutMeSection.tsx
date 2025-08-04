@@ -102,13 +102,45 @@ const DraggableSafariWindow = ({
     });
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+  if ((e.target as HTMLElement).closest('.window-controls')) return;
+  
+  e.stopPropagation();
+  const touch = e.touches[0];
+  setIsDragging(true);
+  setDragStart({
+    x: touch.clientX - state.x,
+    y: touch.clientY - state.y
+  });
+  onFocus();
+};
+
+const handleTouchMove = (e: TouchEvent) => {
+  if (isDragging && !isResizing) {
+    const touch = e.touches[0];
+    onUpdate(id, {
+      x: touch.clientX - dragStart.x,
+      y: touch.clientY - dragStart.y
+    });
+  }
+};
+
+const handleTouchEnd = () => {
+  setIsDragging(false);
+  setIsResizing(false);
+};
+
   useEffect(() => {
     if (isDragging || isResizing) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
       };
     }
   }, [isDragging, isResizing, dragStart, resizeStart]);
@@ -122,15 +154,15 @@ const DraggableSafariWindow = ({
       transition={{ duration: 0.2 }}
       className="bg-white rounded-lg shadow-2xl overflow-hidden"
       style={{
-        position: isMobile.current ? 'relative' : 'absolute',
-        left: isMobile.current ? 'auto' : `${state.x}px`,
-        top: isMobile.current ? 'auto' : `${state.y}px`,
-        width: isMobile.current ? '100%' : `${state.width}px`,
-        height: isMobile.current ? 'auto' : `${state.height}px`,
-        maxHeight: isMobile.current ? '80vh' : 'auto',
+        position: 'absolute',
+        left: `${state.x}px`,
+        top: `${state.y}px`,
+        width: `${state.width}px`,
+        height: `${state.height}px`,
+        maxHeight: isMobile.current ? '70vh' : 'auto',
+        maxWidth: isMobile.current ? '85vw' : 'none',
         zIndex: state.zIndex,
         cursor: isDragging ? 'grabbing' : 'auto',
-        margin: isMobile.current ? '0 auto' : 0,
       }}
       onMouseDown={() => onFocus()}
     >
@@ -138,15 +170,16 @@ const DraggableSafariWindow = ({
       <div 
         className="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b cursor-grab select-none"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
         <div className="flex gap-2 window-controls">
           <button 
             onClick={(e) => {
               e.stopPropagation();
-              onUpdate(id, { isMinimized: true });
-            }}
+                onClose();  // Panggil onClose untuk menutup window
+              }}
             className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-600 transition-colors"
-            aria-label="Minimize window"
+            aria-label="Close window"
           />
           {/* Tombol kuning tanpa interaksi */}
           <div 
@@ -170,7 +203,11 @@ const DraggableSafariWindow = ({
       </div>
       
       {/* Window Content */}
-      <div className={`overflow-auto ${isMobile.current ? 'max-h-[60vh]' : 'h-[calc(100%-48px)]'}`}>
+      <div className="overflow-auto" style={{ 
+        height: 'auto',
+        minHeight: '100px',
+        maxHeight: isMobile.current ? `${Math.min(state.height - 48, window.innerHeight * 0.7)}px` : 'calc(100% - 48px)'
+      }}>
         {children}
       </div>
       
@@ -211,6 +248,8 @@ const NotesWindow = ({ content }: { content: string }) => {
 // Main About Me Section Component
 const AboutMeSection = ({ onClose } : { onClose: () => void }) => {
   const [isMobile, setIsMobile] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
   
   // Check if on mobile
   useEffect(() => {
@@ -220,41 +259,58 @@ const AboutMeSection = ({ onClose } : { onClose: () => void }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current === e.target) {
+        onClose();
+      }
+    };
+
+    useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   // Define different window states for mobile and desktop
   const getInitialWindowStates = () => {
+
+    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
+    const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
+
     if (isMobile) {
       return {
         photo1: {
-          x: 0,
-          y: 0,
-          width: window.innerWidth - 32,
-          height: 300,
+          x: 20,
+          y: 60,
+          width: Math.min(280, screenWidth * 0.75),
+          height: 230,
           zIndex: 1,
           isMinimized: false
         },
-        photo2: { // Tetap berikan properti ini meskipun untuk mobile
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0,
-        zIndex: 0,
-        isMinimized: true
+        photo2: {
+          x: screenWidth * 0.35, // Posisi dari kiri (agak ke kanan)
+          y: 100,                // Posisikan lebih ke atas
+          width: Math.min(220, screenWidth * 0.6),
+          height: 180,
+          zIndex: 2,
+          isMinimized: false     // Set false agar tampil di mobile
         },
         notes: {
-          x: 0,
-          y: 0,
-          width: window.innerWidth - 32,
-          height: 400,
+          x: 30,
+          y: 320,
+          width: Math.min(280, screenWidth * 0.8),
+          height: screenHeight * 0.4,  // Berikan height yang proporsional
           zIndex: 3,
           isMinimized: false
         },
-        spotify: { // Tetap berikan properti ini meskipun untuk mobile
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0,
-        zIndex: 0,
-        isMinimized: true
+        spotify: {
+          x: screenWidth * 0.3,
+          y: 180,
+          width: Math.min(250, screenWidth * 0.65),
+          height: 200,
+          zIndex: 4,
+          isMinimized: false    // Set false agar tampil di mobile
         }
       };
     }
@@ -350,27 +406,23 @@ const AboutMeSection = ({ onClose } : { onClose: () => void }) => {
 Currently pursuing my studies at Universitas Pertamina, I thrive at the intersection of strategy, aesthetics, and usability. Whether I'm building seamless experiences or breaking the grid with experimental visuals, my goal is always the same: "make it work beautifully."
 
 Fun facts:
-- Recently completed (and loved) an international program in France 🇫🇷 
-- Passionate about Software Development, Data Analysis, and Project Management
-- I am not a gamer, nor do drink coffee (I prefer tea ☕️)
-- Currently seeking internship opportunities (Please hire me 🤩)
-- Can't code without my Spotify playlist`;
+• Recently completed (and loved) an international program in France
+• Passionate about Software Development, Data Analysis, and Project Management
+• I am not a gamer, nor do drink coffee (I prefer tea ☕️)
+• Currently seeking internship opportunities (Please hire me 🤩)
+• Can't code without my Spotify playlist`;
 
   return (
-    <div className="fixed inset-0 bg-black/30 z-50 overflow-y-auto px-4 py-6 sm:p-8">
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        className="fixed top-4 right-4 z-[9999] bg-white/80 backdrop-blur rounded-full p-2 hover:bg-white transition-colors shadow-lg"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+    <div
+      ref={containerRef}
+      className="fixed inset-0 bg-black/30 z-50 overflow-y-auto px-4 py-6 sm:p-8"
+    >
+      
 
       {/* Mobile View - Stack windows vertically */}
       {isMobile ? (
-        <div className="flex flex-col gap-6 max-w-md mx-auto pt-8">
+        <div className="relative h-[calc(100vh-6rem)]">
+          <AnimatePresence>
           {activeWindows.photo1 && !windowStates.photo1?.isMinimized && (
             <DraggableSafariWindow
               id="photo1"
@@ -403,6 +455,7 @@ Fun facts:
               <NotesWindow content={notesContent} />
             </DraggableSafariWindow>
           )}
+          </AnimatePresence>
         </div>
       ) : (
         /* Desktop View - Windows with positions */

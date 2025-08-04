@@ -1,28 +1,27 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import ExperienceSection from './ExperienceSection';
 
-import AboutMeSection from './AboutMeSection';
-
-const AboutMeFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
-  const [showAboutModal, setShowAboutModal] = useState(false);
+const ExperienceFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
+  const [showExperienceModal, setShowExperienceModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleOpenAboutMe = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent event from bubbling up
-    setShowAboutModal(true);
+  const handleOpenExperience = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowExperienceModal(true);
   };
 
-  const handleCloseAboutMe = () => {
-    setShowAboutModal(false);
+  const handleCloseExperience = () => {
+    setShowExperienceModal(false);
   };
 
   return (
     <>
-      {/* About Me Folder with improved hover effect */}
+      {/* Projects Folder */}
       <motion.div
-        className="flex flex-col items-center cursor-pointer relative"
-        onClick={handleOpenAboutMe}
+        className="flex flex-col items-center cursor-pointer relative block"
+        onClick={handleOpenExperience}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         whileHover={{ scale: 1.05 }}
@@ -31,8 +30,8 @@ const AboutMeFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
         <div className={`${isMobile ? 'w-12 h-12 mb-1' : 'w-16 h-16 mb-2'} relative flex items-center justify-center`}>
           <motion.img
             src="/icons/folder.png"
-            alt="Folder Icon"
-            className="w-full h-full" 
+            alt="Experience Folder Icon"
+            className="w-full h-full"
             animate={isHovered ? { y: -3 } : { y: 0 }}
             transition={{ duration: 0.2 }}
             draggable={false}
@@ -45,22 +44,22 @@ const AboutMeFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
             textShadow: "0px 0px 3px rgba(255,255,255,0.7)" 
           } : {}}
         >
-          About Me
+          Experience
         </motion.span>
       </motion.div>
 
-      {/* About Me Section Modal with AnimatePresence for smooth transitions */}
+      {/* Experience Modal */}
       <AnimatePresence>
-        {showAboutModal && (
+        {showExperienceModal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="z-50"
-            onClick={(e) => e.stopPropagation()} 
+            onClick={(e) => e.stopPropagation()}
           >
-            <AboutMeSection onClose={handleCloseAboutMe} />
+            <ExperienceSection onClose={handleCloseExperience} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -68,4 +67,4 @@ const AboutMeFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
   );
 };
 
-export default AboutMeFolder;
+export default ExperienceFolder;

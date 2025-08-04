@@ -4,14 +4,12 @@ import Dock from './components/Dock';
 import AboutMeFolder from './components/AboutMeFolder';
 import { BlurIn } from './components/BlurIn';
 import VariableFontText from './components/variable-font-and-cursor'
-
-
+import ProjectsFolder from './components/ProjectsFolder';
+import ExperienceFolder from './components/ExperienceFolder';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  
-  
   return (
     <main
       ref={containerRef}
@@ -33,14 +31,14 @@ export default function Home() {
       </div>
 
       {/* Welcome Text - Responsive sizing */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center px-4">
-        <h1 className="text-xl md:text-2xl font-light text-text-primary mb-2 font-sf transition-all duration-300 hover:font-semibold hover:scale-105">
+      <div className="absolute top-1/3 sm:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center px-4">
+        <h1 className="text-lg md:text-2xl font-light text-text-primary mb-1 sm:mb-2 font-sf transition-all duration-300 hover:font-semibold hover:scale-105">
           welcome to my
         </h1>
         <BlurIn>
           <VariableFontText
             label="portfolio."
-            className="text-6xl md:text-8xl lg:text-12xl italic text-text-primary font-garamond inline-block cursor-none"
+            className="text-5xl md:text-8xl lg:text-12xl italic text-text-primary font-garamond inline-block cursor-none"
             fontVariationMapping={{
               x: { name: "wght", min: 400, max: 800 },
               y: { name: "slnt", min: 0, max: -15 },
@@ -52,45 +50,62 @@ export default function Home() {
 
       {/* Desktop Folder Layout - Right Side */}
       <div className="hidden lg:flex absolute top-20 right-10 flex-col gap-5">
-        {[
-          "Professional Experiences",
-          "Leadership, Public Speaking & Committee", 
-          "Achievements",
-          "Education and Skills"
-        ].map((project, index) => (
-          <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
-            <img
-              src="/icons/folder.png"
-              alt="Folder Icon"
-              className="w-16 h-16 mb-2"
-              draggable={false}
-            />
-            <span className="text-sm text-center max-w-20 leading-tight font-sf">{project}</span>
-          </div>
-        ))}
-      </div>
+  {/* Professional Experiences folder */}
+      <ExperienceFolder isMobile={false} />
+
+      {/* Projects folder - Gunakan komponen ProjectsFolder */}
+      <ProjectsFolder />
+      
+      {/* Folder-folder lainnya */}
+      {[
+        "Leadership, Public Speaking & Committee", 
+        "Achievements",
+        "Education and Skills"
+      ].map((project, index) => (
+        <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
+          <img
+            src="/icons/folder.png"
+            alt="Folder Icon"
+            className="w-12 h-12 mb-2"
+            draggable={false}
+          />
+          <span className="text-sm text-center max-w-20 leading-tight font-sf">{project}</span>
+        </div>
+      ))}
+    </div>
 
       {/* Mobile Folder Grid - Below welcome text */}
-      <div className="lg:hidden absolute bottom-32 left-0 right-0 px-8">
-        <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
-          {[
-            { name: "About Me", icon: "/icons/folder.png" },
-            { name: "Projects", icon: "/icons/folder.png" },
-            { name: "Experience", icon: "/icons/folder.png" },
-            { name: "Skills", icon: "/icons/folder.png" }
-          ].map((item, index) => (
-            <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
-              <img
-                src={item.icon}
-                alt={`${item.name} Icon`}
-                className="w-12 h-12 mb-1"
-                draggable={false}
-              />
-              <span className="text-xs text-center leading-tight font-sf">{item.name}</span>
+        <div className="lg:hidden absolute bottom-40 sm:bottom-32 left-0 right-0 px-8">
+          <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
+            {/* Professional Experiences folder */}
+            <div className="flex flex-col items-center">
+              <ExperienceFolder isMobile={true} />
             </div>
-          ))}
+            
+            {/* Projects folder untuk mobile */}
+            <div className="flex flex-col items-center"> 
+              <ProjectsFolder />
+            </div>
+            
+            {/* Folder-folder lainnya */}
+            {[
+              { name: "Leadership, Public Speaking & Committee", icon: "/icons/folder.png" },
+              { name: "Achievements", icon: "/icons/folder.png" },
+              { name: "Education and Skills", icon: "/icons/folder.png" }
+            ].map((item, index) => (
+              <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
+                <img
+                  src={item.icon}
+                  alt={`${item.name} Icon`}
+                  className="w-12 h-12 mb-1"
+                  draggable={false}
+                />
+                <span className="text-xs text-center leading-tight font-sf">{item.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+
 
       {/* Desktop File Icons - Bottom Left */}
       <div className="hidden md:flex absolute bottom-10 left-10 gap-8">
@@ -111,11 +126,11 @@ export default function Home() {
         </a>
 
         {/* About Me Folder Icon with Modal */}
-        <AboutMeFolder />
+        <AboutMeFolder isMobile={false} />
       </div>
 
       {/* Mobile Bottom Section */}
-      <div className="md:hidden absolute bottom-20 left-0 right-0 flex justify-center gap-6">
+      <div className="md:hidden absolute bottom-24 left-0 right-0 flex justify-center gap-6">
         <a
           href="/cv-amanda.pdf" 
           target="_blank"
@@ -130,7 +145,7 @@ export default function Home() {
           />
           <span className="text-xs text-center font-sf">Resume</span>
         </a>
-        <AboutMeFolder />
+        <AboutMeFolder isMobile={true} />
       </div>
       <Dock />
     </main>
