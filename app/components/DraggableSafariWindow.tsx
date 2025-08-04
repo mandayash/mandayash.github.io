@@ -31,6 +31,7 @@ export interface SafariWindowProps {
  * Draggable Safari Window Component
  * A reusable window component styled like Safari browser with dragging, resizing
  * and responsive behavior for both desktop and mobile.
+ * Updated to match modern Safari design with improved typography and layout.
  */
 const DraggableSafariWindow = ({ 
   id, 
@@ -82,8 +83,8 @@ const DraggableSafariWindow = ({
     }
     
     if (isResizing) {
-      const newWidth = Math.max(300, resizeStart.width + (e.clientX - resizeStart.x));
-      const newHeight = Math.max(200, resizeStart.height + (e.clientY - resizeStart.y));
+      const newWidth = Math.max(400, resizeStart.width + (e.clientX - resizeStart.x));
+      const newHeight = Math.max(300, resizeStart.height + (e.clientY - resizeStart.y));
       onUpdate(id, {
         width: newWidth,
         height: newHeight
@@ -133,8 +134,8 @@ const DraggableSafariWindow = ({
     
     if (isResizing) {
       const touch = e.touches[0];
-      const newWidth = Math.max(200, resizeStart.width + (touch.clientX - resizeStart.x));
-      const newHeight = Math.max(150, resizeStart.height + (touch.clientY - resizeStart.y));
+      const newWidth = Math.max(300, resizeStart.width + (touch.clientX - resizeStart.x));
+      const newHeight = Math.max(200, resizeStart.height + (touch.clientY - resizeStart.y));
       onUpdate(id, {
         width: newWidth,
         height: newHeight
@@ -179,79 +180,137 @@ const DraggableSafariWindow = ({
   return (
     <motion.div
       ref={windowRef}
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.9, opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className="bg-white rounded-lg shadow-2xl overflow-hidden"
+      initial={{ scale: 0.95, opacity: 0, y: 20 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
+      exit={{ scale: 0.95, opacity: 0, y: 20 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200/50 backdrop-blur-xl"
       style={{
         position: 'absolute',
         left: `${state.x}px`,
         top: `${state.y}px`,
         width: `${state.width}px`,
         height: `${state.height}px`,
-        maxHeight: isMobile.current ? '80vh' : 'none',
-        maxWidth: isMobile.current ? '90vw' : 'none',
+        maxHeight: isMobile.current ? '85vh' : 'none',
+        maxWidth: isMobile.current ? '95vw' : 'none',
         zIndex: state.zIndex,
         cursor: isDragging ? 'grabbing' : 'auto',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)',
       }}
       onMouseDown={() => onFocus()}
     >
-      {/* Window Header */}
+      {/* Window Header - Updated Design */}
       <div 
-        className="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b cursor-grab select-none"
+        className="bg-gradient-to-b from-gray-50 to-gray-100/80 px-4 py-3 flex items-center gap-3 border-b border-gray-200/60 cursor-grab select-none backdrop-blur-sm"
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
+        {/* Traffic Light Controls */}
         <div className="flex gap-2 window-controls">
           <button 
             onClick={(e) => {
               e.stopPropagation();
-              onClose();  // Call onClose to close the window
+              onClose();
             }}
-            className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-600 transition-colors"
+            className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-600 transition-all duration-200 hover:shadow-md relative group"
             aria-label="Close window"
-          />
-          {/* Yellow button - decorative only */}
-          <div 
-            className="w-3 h-3 bg-yellow-500 rounded-full"
-            aria-hidden="true"
-          />
-          {/* Green button - decorative only */}
-          <div 
-            className="w-3 h-3 bg-green-500 rounded-full"
-            aria-hidden="true" 
-          />
+          >
+            <span className="absolute inset-0 flex items-center justify-center text-red-800 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+              ×
+            </span>
+          </button>
+          <button 
+            className="w-3 h-3 bg-yellow-500 rounded-full hover:bg-yellow-600 transition-all duration-200 hover:shadow-md relative group"
+            aria-label="Minimize window"
+          >
+            <span className="absolute inset-0 flex items-center justify-center text-yellow-800 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+              −
+            </span>
+          </button>
+          <button 
+            className="w-3 h-3 bg-green-500 rounded-full hover:bg-green-600 transition-all duration-200 hover:shadow-md relative group"
+            aria-label="Maximize window"
+          >
+            <span className="absolute inset-0 flex items-center justify-center text-green-800 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+              +
+            </span>
+          </button>
         </div>
-        <div className="flex-1 flex flex-col items-center justify-center">
-          {/* Title */}
-          {title && <span className="font-medium text-xs mb-1 hidden sm:block">{title}</span>}
-          {/* URL */}
-          <div className="bg-gray-200 rounded px-3 py-1 text-xs inline-block truncate max-w-[200px] sm:max-w-none">
-            {url}
+
+        {/* Navigation Controls */}
+        <div className="flex items-center gap-2">
+          <button className="p-1 rounded-md hover:bg-gray-200 transition-colors disabled:opacity-50" disabled>
+            <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button className="p-1 rounded-md hover:bg-gray-200 transition-colors disabled:opacity-50" disabled>
+            <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* URL Bar */}
+        <div className="flex-1 flex items-center justify-center px-4">
+          <div className="bg-white/80 border border-gray-300/60 rounded-lg px-4 py-1.5 flex items-center gap-2 min-w-0 max-w-md w-full shadow-sm">
+            {/* Security Icon */}
+            <svg className="w-3.5 h-3.5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+            </svg>
+            
+            {/* URL Text */}
+            <span className="text-sm text-gray-700 font-sf font-medium truncate min-w-0">
+              {url}
+            </span>
+            
+            {/* Reload Button */}
+            <button className="p-0.5 rounded hover:bg-gray-200 transition-colors flex-shrink-0">
+              <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Window Title - Show on larger screens */}
+        {title && (
+          <div className="hidden lg:block text-sm font-sf font-medium text-gray-700 max-w-32 truncate">
+            {title}
+          </div>
+        )}
       </div>
       
       {/* Window Content */}
-      <div className="overflow-auto" style={{ 
-        minHeight: '100px',
-        maxHeight: `${Math.min(state.height - 48, window.innerHeight * 0.7)}px`,
-        height: isMobile.current ? 'auto' : 'calc(100% - 48px)'
-      }}>
+      <div 
+        className="overflow-auto bg-white font-sf" 
+        style={{ 
+          minHeight: '200px',
+          maxHeight: `${Math.min(state.height - 60, window.innerHeight * 0.8)}px`,
+          height: isMobile.current ? 'auto' : 'calc(100% - 60px)'
+        }}
+      >
         {children}
       </div>
       
-      {/* Resize Handle */}
-      <div 
-        className="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize"
-        onMouseDown={handleResizeStart}
-        onTouchStart={handleResizeTouchStart}
-      >
-        <svg className="w-4 h-4 text-gray-400" viewBox="0 0 16 16">
-          <path fill="currentColor" d="M13 13L3 3M13 9L9 13M13 5L5 13" strokeWidth="1" />
-        </svg>
-      </div>
+      {/* Resize Handle - Enhanced */}
+      {!isMobile.current && (
+        <div 
+          className="absolute bottom-0 right-0 w-5 h-5 cursor-se-resize group"
+          onMouseDown={handleResizeStart}
+          onTouchStart={handleResizeTouchStart}
+        >
+          <div className="absolute bottom-1 right-1 w-3 h-3 opacity-30 group-hover:opacity-60 transition-opacity">
+            <svg className="w-full h-full text-gray-600" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M16 16V10h-2v4h-4v2h6zM16 6V0h-6v2h4v4h2z"/>
+              <path d="M6 16v-2H2v-4H0v6h6zM0 6h2V2h4V0H0v6z"/>
+            </svg>
+          </div>
+        </div>
+      )}
+
+      {/* Window Focus Ring */}
+      <div className="absolute inset-0 rounded-xl pointer-events-none border-2 border-transparent group-focus-within:border-blue-400/50 transition-colors" />
     </motion.div>
   );
 };
