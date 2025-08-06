@@ -48,7 +48,7 @@ const experienceData: ExperienceData[] = [
       "Reduced API response time by 20% through optimization",
       "Participated in successful migration from JavaScript to TypeScript",
     ],
-    images: ["/companies/tokopedia.jpg", "/companies/tokopedia-office.jpg"],
+    images: ["/images/experiences/testsaja.png", "/companies/tokopedia-office.jpg"],
     details: {
       // industry: 'E-commerce',
       // companySize: 'Large (1000+ employees)',
@@ -235,61 +235,179 @@ const experienceData: ExperienceData[] = [
 ];
 
 // Image Carousel Component
+// Upgrade ImageCarousel dengan animasi Cover Flow bergaya macOS
 const ImageCarousel = ({ images }: { images: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [isPanning, setIsPanning] = useState(false);
+  const [panDirection, setPanDirection] = useState<'left' | 'right' | null>(null);
+  
   const nextImage = () => {
+    setIsPanning(true);
+    setPanDirection('left');
+    setTimeout(() => setIsPanning(false), 500);
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevImage = () => {
+    setIsPanning(true);
+    setPanDirection('right');
+    setTimeout(() => setIsPanning(false), 500);
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
+
+  const nextImageIndex = (currentIndex + 1) % images.length;
+  const prevImageIndex = (currentIndex - 1 + images.length) % images.length;
 
   if (images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden bg-gray-100">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          src={images[currentIndex]}
-          alt={`Experience image ${currentIndex + 1}`}
-          className="w-full h-full object-cover"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.3 }}
-        />
-      </AnimatePresence>
+    <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200 shadow-inner">
+      {/* macOS style subtle shadow on top and bottom */}
+      <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
+      <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
+      
+      {/* Main container */}
+      <div className="relative w-full h-full perspective-1000">
+        {/* Current Image */}
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={`image-${currentIndex}`}
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ 
+              opacity: 0, 
+              rotateY: panDirection === 'left' ? 15 : -15,
+              scale: 0.9, 
+              z: -100 
+            }}
+            animate={{ 
+              opacity: 1, 
+              rotateY: 0, 
+              scale: 1, 
+              z: 0,
+              filter: "drop-shadow(0 10px 8px rgb(0 0 0 / 0.15))"
+            }}
+            exit={{ 
+              opacity: 0, 
+              rotateY: panDirection === 'left' ? -15 : 15, 
+              scale: 0.9,
+              z: -100
+            }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 30, 
+              mass: 1 
+            }}
+          >
+            {/* Glass effect on images */}
+            <div className="relative w-full h-full rounded-lg overflow-hidden group">
+              <motion.img
+                src={images[currentIndex]}
+                alt={`Experience image ${currentIndex + 1}`}
+                className="w-full h-full object-cover rounded-lg no-drag" // tambahkan class no-drag
+                layoutId={`image-${currentIndex}`}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5 }}
+              />
+              
+              {/* Glassmorphism reflection effect */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isPanning ? 0.6 : 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              />
+            </div>
+          </motion.div>
+        </AnimatePresence>
+        
+        {/* Preview of next image (smaller, right side) */}
+        {images.length > 1 && (
+          <motion.div 
+            className="absolute inset-y-0 right-0 w-1/5 flex items-center justify-center opacity-70"
+            initial={{ x: 100, opacity: 0, rotateY: -15 }}
+            animate={{ x: 50, opacity: 0.5, rotateY: -25 }}
+            style={{ transformOrigin: "right center", zIndex: -1 }}
+          >
+            <motion.img
+              src={images[nextImageIndex]}
+              alt={`Next image`}
+              className="w-full h-5/6 object-cover rounded-lg shadow-lg"
+              style={{ filter: "blur(1px) brightness(0.7)" }}
+            />
+          </motion.div>
+        )}
+        
+        {/* Preview of previous image (smaller, left side) */}
+        {images.length > 1 && (
+          <motion.div 
+            className="absolute inset-y-0 left-0 w-1/5 flex items-center justify-center opacity-70"
+            initial={{ x: -100, opacity: 0, rotateY: 15 }}
+            animate={{ x: -50, opacity: 0.5, rotateY: 25 }}
+            style={{ transformOrigin: "left center", zIndex: -1 }}
+          >
+            <motion.img
+              src={images[prevImageIndex]}
+              alt={`Previous image`}
+              className="w-full h-5/6 object-cover rounded-lg shadow-lg"
+              style={{ filter: "blur(1px) brightness(0.7)" }}
+            />
+          </motion.div>
+        )}
+      </div>
 
+      {/* Navigation arrows */}
       {images.length > 1 && (
         <>
-          <button
+          <motion.button
             onClick={prevImage}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            ←
-          </button>
-          <button
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+          
+          <motion.button
             onClick={nextImage}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            →
-          </button>
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-white" : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
         </>
       )}
+      
+      {/* Indicator dots with macOS style */}
+      <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+        {images.map((_, index) => (
+          <motion.button
+            key={index}
+            onClick={() => {
+              setPanDirection(index > currentIndex ? 'left' : 'right');
+              setCurrentIndex(index);
+              setIsPanning(true);
+              setTimeout(() => setIsPanning(false), 500);
+            }}
+            className={`w-1.5 h-1.5 rounded-full bg-gray-300 outline-none focus:outline-none border-none`}
+            initial={false}
+            animate={{
+              scale: index === currentIndex ? 1.4 : 1,
+              backgroundColor: index === currentIndex ? "rgb(59, 130, 246)" : "rgb(209, 213, 219)",
+            }}
+            whileHover={{ scale: index === currentIndex ? 1.4 : 1.2 }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+        ))}
+      </div>
     </div>
   );
 };

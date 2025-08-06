@@ -54,8 +54,8 @@ export default function Home() {
       <ExperienceFolder isMobile={false} />
 
       {/* Projects folder - Gunakan komponen ProjectsFolder */}
-      <ProjectsFolder />
-      
+      <ProjectsFolder isMobile={false} />
+
       {/* Folder-folder lainnya */}
       {[
         "Leadership, Public Speaking & Committee", 

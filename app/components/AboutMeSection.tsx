@@ -259,18 +259,24 @@ const AboutMeSection = ({ onClose } : { onClose: () => void }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      console.log("Click/touch detected", e.target, containerRef.current);
       if (containerRef.current === e.target) {
+        console.log("Outside click detected, closing...");
         onClose();
       }
     };
 
     useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+      // Tambahkan event listener untuk mouse dan touch
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('touchstart', handleClickOutside);
+      };
+    }, [onClose]);
 
   // Define different window states for mobile and desktop
   const getInitialWindowStates = () => {
