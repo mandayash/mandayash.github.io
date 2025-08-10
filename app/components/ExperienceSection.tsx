@@ -10,17 +10,17 @@ interface ExperienceData {
   location: string;
   period: string;
   preview: string;
-  description: string;
+  description: string[];
   responsibilities: string[];
   skills: string[];
   achievements: string[];
   images: string[];
-  details: {
-    industry?: string;
-    companySize?: string;
-    employmentType?: string;
-    highlights: string[];
-  };
+  // details: {
+  //   industry?: string;
+  //   companySize?: string;
+  //   employmentType?: string;
+  //   highlights: string[];
+  // };
 }
 
 const experienceData: ExperienceData[] = [
@@ -31,207 +31,25 @@ const experienceData: ExperienceData[] = [
     location: "Universitas Pertamina",
     period: "February 2025 - June 2025",
     preview:
-      "Contributed to front-end development for Indonesia's largest e-commerce platform",
-    description:
-      "Worked with the front-end development team to enhance user interfaces and implement new features for Tokopedia's web and mobile platforms, focusing on performance optimization and responsive design.",
+      "Led 5-member team developing halal food verification mobile app",
+    description: [
+      "First, thanks to my Slytherin teammates for their collaboration on the HalalLens project. HalalLens is a final project for Mobile Development course. This application is designed to check the halal status of food and beverage products through barcode scanning and OCR technology. \n The app addresses challenges Muslim consumers face in verifying halal products, especially when traveling or dealing with foreign language labels, by providing accessible and reliable verification solutions.",
+      "Our app features a comprehensive set of tools including a barcode scanner for instant halal verification, OCR technology to verification through ingredient labels, accessibility options with voice navigation for visually impaired users, and a history tracking system for convenient reference to previously scanned products. These integrated features create a seamless experience for Muslim consumers seeking reliable halal product verification.",
+    ],
     responsibilities: [
-      "Implemented new UI components and features using React.js",
-      "Collaborated with designers to ensure accurate implementation of visual designs",
-      "Optimized front-end performance and page load times",
-      "Participated in code reviews and testing phases",
-      "Contributed to responsive design implementation",
+      "Coordinated requirement gathering through artifact research, user interviews, and survey analysis",
+      "Managed complete project lifecycle from initial research phase to development",
+      "Facilitated team collaboration and ensured adherence to user-centered design principles",
     ],
-    skills: ["React.js", "TypeScript", "Redux", "Jest", "Responsive Design"],
+    skills: ["Project Managements", "User Research & Requirements Gathering", "UI/UX Design Principles", "Agile Development"],
     achievements: [
-      "Improved page load time by 15% through code optimization",
-      "Implemented 5+ new features with 100% design accuracy",
-      "Reduced API response time by 20% through optimization",
-      "Participated in successful migration from JavaScript to TypeScript",
+      "Successfully delivered project within 4-month timeline with 5-member team",
+      "We Won 'Best UI/UX Design' award at final project exhibition",
+      "Appreciated as 'Most Inclusive Application' recognition for accessibility features",
     ],
-    images: ["/images/experiences/testsaja.png", "/companies/tokopedia-office.jpg"],
-    details: {
-      // industry: 'E-commerce',
-      // companySize: 'Large (1000+ employees)',
-      // employmentType: 'Internship',
-      highlights: [
-        "Worked in Agile environment with 2-week sprints",
-        "Contributed to Indonesia's largest e-commerce platform",
-        "Gained experience in large-scale web application development",
-        "Collaborated with cross-functional teams including designers, product managers, and backend engineers",
-      ],
-    },
+    images: ["/images/experiences/halallens-1.png", "/images/experiences/halallens-2.png", "/images/experiences/halallens-3.png", "/images/experiences/halallens-4.png", "/images/experiences/halallens-5.png", "/images/experiences/halallens-6.png", "/images/experiences/halallens-7.png"],
   },
-  {
-    id: "telkom-indonesia",
-    company: "PT. Telkom Indonesia",
-    position: "UI/UX Design Intern",
-    location: "Bandung, Indonesia",
-    period: "June 2024 - August 2024",
-    preview:
-      "Created user interface designs and conducted usability testing for digital products",
-    description:
-      "Worked with the design team to create user-friendly interfaces for Telkom's digital products. Conducted user research and usability testing to improve user experience and interface design across multiple platforms.",
-    responsibilities: [
-      "Designed user interfaces for web and mobile applications",
-      "Conducted user research and created user personas",
-      "Performed usability testing and presented findings",
-      "Created wireframes, prototypes, and high-fidelity mockups",
-      "Collaborated with development teams during implementation",
-    ],
-    skills: [
-      "Figma",
-      "Adobe XD",
-      "User Research",
-      "Prototyping",
-      "Usability Testing",
-    ],
-    achievements: [
-      "Designed interfaces used by 50,000+ daily users",
-      "Improved user satisfaction scores by 12%",
-      "Created comprehensive design system adopted by 3 teams",
-      "Received excellence recognition for usability testing methodology",
-    ],
-    images: ["/companies/telkom.jpg", "/companies/telkom-office.jpg"],
-    details: {
-      industry: "Telecommunications",
-      companySize: "Enterprise (5000+ employees)",
-      employmentType: "Internship",
-      highlights: [
-        "Worked on digital products used by millions of users",
-        "Gained exposure to enterprise-level design processes",
-        "Collaborated with multidisciplinary teams",
-        "Contributed to Indonesia's largest telecommunications company",
-      ],
-    },
-  },
-  {
-    id: "dicoding",
-    company: "Dicoding Indonesia",
-    position: "Technical Content Writer",
-    location: "Remote",
-    period: "September 2023 - March 2024",
-    preview:
-      "Created technical learning content focusing on web development and machine learning",
-    description:
-      "Developed comprehensive technical learning materials for Dicoding's education platform. Created coding tutorials, explanatory articles, and practical exercises focusing on web development and machine learning topics.",
-    responsibilities: [
-      "Researched and developed technical content for web development courses",
-      "Created hands-on programming exercises and code examples",
-      "Wrote clear explanations for complex technical concepts",
-      "Reviewed and updated existing course materials",
-      "Collaborated with subject matter experts to ensure content accuracy",
-    ],
-    skills: [
-      "Technical Writing",
-      "Web Development",
-      "Machine Learning",
-      "Educational Content Creation",
-    ],
-    achievements: [
-      "Created content accessed by 10,000+ students",
-      "Received 4.8/5 average content quality rating",
-      "Developed 3 comprehensive learning modules",
-      "Contributed to Bangkit Academy curriculum materials",
-    ],
-    images: ["/companies/dicoding.jpg"],
-    details: {
-      industry: "Education Technology",
-      companySize: "Medium (100-500 employees)",
-      employmentType: "Part-time",
-      highlights: [
-        "Developed educational content used by thousands of students",
-        "Expanded technical knowledge across multiple domains",
-        "Improved technical communication and teaching skills",
-        "Contributed to Indonesia's leading tech education platform",
-      ],
-    },
-  },
-  {
-    id: "google-dsc",
-    company: "Google Developer Student Club",
-    position: "Core Team Member",
-    location: "University of Indonesia",
-    period: "August 2023 - July 2024",
-    preview:
-      "Led technical workshops and mentored students in Google technologies",
-    description:
-      "Served as a core team member for Google Developer Student Club at the University of Indonesia. Organized and led technical workshops, mentored fellow students, and helped build a community of developers focused on Google technologies.",
-    responsibilities: [
-      "Organized technical workshops and coding sessions",
-      "Mentored students in mobile and web development",
-      "Coordinated hackathons and collaborative coding events",
-      "Facilitated communication between students and Google Developer experts",
-      "Created educational resources on Google technologies",
-    ],
-    skills: [
-      "Leadership",
-      "Event Management",
-      "Android Development",
-      "Google Cloud",
-      "Public Speaking",
-    ],
-    achievements: [
-      "Led 12+ successful technical workshops with 300+ attendees",
-      "Organized hackathon with 150+ participants",
-      "Increased club membership by 40%",
-      "Received recognition from Google for community building",
-    ],
-    images: ["/companies/gdsc.jpg", "/companies/gdsc-event.jpg"],
-    details: {
-      industry: "Education / Community",
-      companySize: "Student Organization",
-      employmentType: "Volunteer",
-      highlights: [
-        "Developed leadership and communication skills",
-        "Built technical community within university setting",
-        "Expanded network with Google professionals",
-        "Gained experience in organizing technical events and workshops",
-      ],
-    },
-  },
-  {
-    id: "freelance",
-    company: "Freelance",
-    position: "Web Developer",
-    location: "Remote",
-    period: "2022 - Present",
-    preview:
-      "Developed custom websites and applications for various clients across industries",
-    description:
-      "Provided freelance web development services for multiple clients across different industries. Designed and developed custom websites, focusing on responsive design, performance optimization, and meeting client requirements.",
-    responsibilities: [
-      "Designed and developed custom websites from scratch",
-      "Collaborated with clients to define project requirements",
-      "Created responsive layouts for optimal viewing across devices",
-      "Implemented custom functionalities based on client needs",
-      "Provided maintenance and support services",
-    ],
-    skills: [
-      "HTML/CSS",
-      "JavaScript",
-      "React",
-      "WordPress",
-      "Client Management",
-    ],
-    achievements: [
-      "Completed 15+ projects with 100% client satisfaction",
-      "Maintained 90% client retention rate",
-      "Reduced average page load time to under 2 seconds",
-      "Implemented SEO optimizations resulting in traffic increases",
-    ],
-    images: ["/companies/freelance.jpg"],
-    details: {
-      industry: "Various",
-      companySize: "Independent",
-      employmentType: "Freelance",
-      highlights: [
-        "Built portfolio of diverse projects across multiple industries",
-        "Developed client management and communication skills",
-        "Managed complete project lifecycle independently",
-        "Gained experience in estimating, scoping, and delivering projects",
-      ],
-    },
-  },
+  
 ];
 
 // Image Carousel Component
@@ -261,7 +79,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
   if (images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200 shadow-inner">
+    <div className="relative w-full aspect-[16/9] md:aspect-[16/9] mb-6 rounded-lg overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200">
       {/* macOS style subtle shadow on top and bottom */}
       <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
       <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
@@ -333,7 +151,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
             <motion.img
               src={images[nextImageIndex]}
               alt={`Next image`}
-              className="w-full h-5/6 object-cover rounded-lg shadow-lg"
+              className="w-full h-4/5 object-cover rounded-lg shadow-lg"
               style={{ filter: "blur(1px) brightness(0.7)" }}
             />
           </motion.div>
@@ -350,7 +168,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
             <motion.img
               src={images[prevImageIndex]}
               alt={`Previous image`}
-              className="w-full h-5/6 object-cover rounded-lg shadow-lg"
+              className="w-full h-4/5 object-cover rounded-lg shadow-lg"
               style={{ filter: "blur(1px) brightness(0.7)" }}
             />
           </motion.div>
@@ -362,7 +180,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
         <>
           <motion.button
             onClick={prevImage}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -374,7 +192,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
           
           <motion.button
             onClick={nextImage}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -489,7 +307,7 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
         onFocus={focusWindow}
       >
         {/* Content Area */}
-        <div className={`flex ${isMobile ? "flex-col" : "flex-row"} h-full`}>
+        <div className={`flex ${isMobile ? "flex-col" : "flex-row"} h-full font-sf`}>
           {/* Sidebar - Experience List */}
           <div
             className={`${
@@ -514,24 +332,24 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-medium text-sm text-gray-800 leading-tight">
+                      <h3 className="font-medium text-sm text-gray-800 leading-tight font-sf">
                         {experience.company}
                       </h3>
-                      <span className="text-xs text-gray-500 ml-2 whitespace-nowrap">
+                      <span className="text-xs text-gray-500 ml-2 whitespace-nowrap text-justify font-sf">
                         {experience.period.split(" - ")[0]}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600 mb-2">
+                    <p className="text-xs text-gray-600 mb-2 text-justify font-sf">
                       {experience.position}
                     </p>
-                    <p className="text-xs text-gray-500 line-clamp-2">
+                    <p className="text-xs text-gray-500 line-clamp-2 text-justify font-sf">
                       {experience.preview}
                     </p>
-                    <div className="flex flex-wrap gap-1 mt-2">
+                    <div className="flex flex-wrap gap-1 mt-2 text-justify font-sf">
                       {experience.skills.slice(0, 2).map((skill, index) => (
                         <span
                           key={index}
-                          className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded"
+                          className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded text-justify font-sf"
                         >
                           {skill}
                         </span>
@@ -578,49 +396,17 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
                   <h1 className="text-2xl font-bold text-gray-800 mb-3">
                     {selectedExperience.company}
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
-                    {selectedExperience.description}
-                  </p>
+                  <div className="text-gray-600 leading-relaxed space-y-4">
+                    {selectedExperience.description.map((paragraph, index) => (
+                      <p key={index} className="text-justify font-sf">{paragraph}</p>
+                    ))} 
+                  </div>
                 </div>
 
                 {/* Image Carousel */}
                 <ImageCarousel images={selectedExperience.images} />
 
-                {/* Experience Details */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-gray-800">
-                      Company Details
-                    </h3>
-                    <div className="space-y-2 text-sm">
-                      {selectedExperience.details.industry && (
-                        <div className="flex">
-                          <span className="font-medium w-28">Industry:</span>
-                          <span>{selectedExperience.details.industry}</span>
-                        </div>
-                      )}
-                      {selectedExperience.details.companySize && (
-                        <div className="flex">
-                          <span className="font-medium w-28">
-                            Company Size:
-                          </span>
-                          <span>{selectedExperience.details.companySize}</span>
-                        </div>
-                      )}
-                      {selectedExperience.details.employmentType && (
-                        <div className="flex">
-                          <span className="font-medium w-28">
-                            Position Type:
-                          </span>
-                          <span>
-                            {selectedExperience.details.employmentType}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
+                  <div className="mb-6">
                     <h3 className="text-lg font-semibold mb-3 text-gray-800">Skills Utilized</h3>
                     <div className="flex flex-wrap gap-2">
                       {selectedExperience.skills.map((skill, index) => {
@@ -647,42 +433,23 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
                       })}
                     </div>
                   </div>
-                  </div>
+                
+                
 
                 {/* Key Responsibilities */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800">
+                <div className="mb-6 font-sf">
+                  <h3 className="text-lg font-semibold mb-3 text-gray-800 text-justify font-sf">
                     Key Responsibilities
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 font-sf">
                     {selectedExperience.responsibilities.map(
                       (responsibility, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
+                          className="flex items-start gap-2 text-sm text-gray-600 font-sf"
                         >
-                          <span className="text-blue-500 mt-1">•</span>
-                          <span>{responsibility}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-
-                {/* Experience Highlights */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800">
-                    Experience Highlights
-                  </h3>
-                  <ul className="space-y-2">
-                    {selectedExperience.details.highlights.map(
-                      (highlight, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
-                        >
-                          <span className="text-purple-500 mt-1">★</span>
-                          <span>{highlight}</span>
+                          <span className="text-blue-500 mt-1 text-justify font-sf">•</span>
+                          <span className="text-justify font-sf">{responsibility}</span>
                         </li>
                       )
                     )}
@@ -691,7 +458,7 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
 
                 {/* Achievements */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800">
+                  <h3 className="text-lg font-semibold mb-3 text-gray-800 font-sf">
                     Achievements
                   </h3>
                   <ul className="space-y-2">
@@ -699,10 +466,10 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
                       (achievement, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
+                          className="flex items-start gap-2 text-sm text-gray-600 font-sf"
                         >
-                          <span className="text-green-500 mt-1">✓</span>
-                          <span>{achievement}</span>
+                          <span className="text-green-500 mt-1 font-sf">✓</span>
+                          <span className="text-justify font-sf">{achievement}</span>
                         </li>
                       )
                     )}
