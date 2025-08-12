@@ -126,10 +126,10 @@ const experienceData: ExperienceData[] = [
    "Gained practical experience in enterprise-level web application development"
  ],
  images: [
+   "/images/experiences/meetsin-0.png",
    "/images/experiences/meetsin-1.png",
    "/images/experiences/meetsin-2.png",
-   "/images/experiences/meetsin-3.png",
-   "/images/experiences/meetsin-4.png"
+   "/images/experiences/meetsin-3.png"
  ],
 },
 {
@@ -170,15 +170,12 @@ const experienceData: ExperienceData[] = [
  ],
  images: [
    "/images/experiences/uiuxindo-1.png",
-   "/images/experiences/uiuxindo-2.png",
-   "/images/experiences/uiuxindo-3.png",
-   "/images/experiences/uiuxindo-4.png",
-   "/images/experiences/uiuxindo-5.png"
+   "/images/experiences/uiuxindo-2.png"
  ],
 },
 {
  id: "UnipertaminaTA",
- company: "Universitas Pertamina",
+ company: "Practicum Assistant - Database",
  position: "Database Management & Analytics Assistant",
  location: "Jakarta, Indonesia",
  period: "August 2024 - January 2025",

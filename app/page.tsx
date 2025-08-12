@@ -31,14 +31,14 @@ export default function Home() {
       </div>
 
       {/* Welcome Text - Responsive sizing */}
-      <div className="absolute top-1/3 sm:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center px-4">
-        <h1 className="text-lg md:text-2xl font-light text-text-primary mb-1 sm:mb-2 font-sf transition-all duration-300 hover:font-semibold hover:scale-105">
+      <div className="absolute  md:top-1/3 top-1/3 sm:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center px-4 z-10">
+        <h1 className="text-lg md:text-xl lg:text-2xl font-light text-text-primary mb-1 sm:mb-2 font-sf transition-all duration-300 hover:font-semibold hover:scale-105">
           welcome to my
         </h1>
         <BlurIn>
           <VariableFontText
             label="portfolio."
-            className="text-5xl md:text-8xl lg:text-12xl italic text-text-primary font-garamond inline-block cursor-none"
+            className="text-5xl md:text-6xl lg:text-8xl italic text-text-primary font-garamond inline-block cursor-none"
             fontVariationMapping={{
               x: { name: "wght", min: 400, max: 800 },
               y: { name: "slnt", min: 0, max: -15 },
@@ -51,10 +51,18 @@ export default function Home() {
       {/* Desktop Folder Layout - Right Side */}
       <div className="hidden lg:flex absolute top-20 right-10 flex-col gap-5">
   {/* Professional Experiences folder */}
-      <ExperienceFolder isMobile={false} />
+      <ExperienceFolder isMobile={true} size={{ 
+        sm: "w-12 h-12", 
+        md: "w-12 h-12", 
+        lg: "w-12 h-12" 
+      }} />
 
       {/* Projects folder - Gunakan komponen ProjectsFolder */}
-      <ProjectsFolder isMobile={false} />
+      <ProjectsFolder isMobile={true} size={{ 
+        sm: "w-12 h-12", 
+        md: "w-12 h-12", 
+        lg: "w-12 h-12" 
+      }} />
 
       {/* Folder-folder lainnya */}
       {[
@@ -79,13 +87,27 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
             {/* Professional Experiences folder */}
             <div className="flex flex-col items-center">
-              <ExperienceFolder isMobile={true} />
+              <ExperienceFolder isMobile={true} size={{ 
+                  sm: "w-12 h-12", 
+                  md: "w-12 h-12", 
+                  lg: "w-12 h-12" 
+                }} />
             </div>
             
             {/* Projects folder untuk mobile */}
             <div className="flex flex-col items-center"> 
-              <ProjectsFolder />
+              <ProjectsFolder isMobile={true} size={{ 
+                  sm: "w-12 h-12", 
+                  md: "w-12 h-12", 
+                  lg: "w-12 h-12" 
+                }} />
             </div>
+
+            <AboutMeFolder isMobile={true} size={{ 
+              sm: "w-12 h-12", 
+              md: "w-12 h-12", 
+              lg: "w-12 h-12" 
+            }} />
             
             {/* Folder-folder lainnya */}
             {[
@@ -119,14 +141,18 @@ export default function Home() {
           <img
             src="/icons/docs.png"
             alt="Resume Icon" 
-            className="w-16 h-16 mb-2"
+            className="w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12 mb-2"
             draggable={false}
           />
           <span className="text-sm text-center max-w-15 leading-tight font-sf">Resume.pdf</span>
         </a>
 
         {/* About Me Folder Icon with Modal */}
-        <AboutMeFolder isMobile={false} />
+        <AboutMeFolder isMobile={false} size={{ 
+          sm: "w-12 h-12", 
+          md: "w-12 h-12", 
+          lg: "w-12 h-12" 
+        }} />
       </div>
 
       {/* Mobile Bottom Section */}
@@ -145,7 +171,6 @@ export default function Home() {
           />
           <span className="text-xs text-center font-sf">Resume</span>
         </a>
-        <AboutMeFolder isMobile={true} />
       </div>
       <Dock />
     </main>

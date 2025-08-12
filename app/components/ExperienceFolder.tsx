@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ExperienceSection from './ExperienceSection';
 
-const ExperienceFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
+const ExperienceFolder = ({ 
+  isMobile = false,
+  size = { sm: "w-12 h-12", md: "w-12 h-12", lg: "w-12 h-12" }
+}: { 
+  isMobile?: boolean,
+  size?: { sm: string, md: string, lg: string }
+}) => {
   const [showExperienceModal, setShowExperienceModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 

@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectsSection from './ProjectsSection';
 
-const ProjectsFolder = ({ isMobile = false }: { isMobile?: boolean }) => {
+const ProjectsFolder = ({ 
+  isMobile = false,
+  size = { sm: "w-12 h-12", md: "w-12 h-12", lg: "w-12 h-12" }
+}: { 
+  isMobile?: boolean,
+  size?: { sm: string, md: string, lg: string }
+}) => {
   const [showProjectsModal, setShowProjectsModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
