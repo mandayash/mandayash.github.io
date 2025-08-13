@@ -5,234 +5,160 @@ import MacOSSkillTag from "./MacOSSkillTag";
 
 interface ProjectData {
   id: string;
-  company: string;
-  position: string;
-  location: string;
-  period: string;
+  title: string;
+  aspect: string;
+  year: string;
   preview: string;
-  description: string;
-  responsibilities: string[];
-  skills: string[];
-  achievements: string[];
+  description: string[];
   images: string[];
-  details: {
-    industry?: string;
-    companySize?: string;
-    employmentType?: string;
-    highlights: string[];
-  };
+  // Tambahkan properties baru
+  documentLink?: string;  // Link ke PDF report (optional)
+  externalLinks?: {
+    title: string;
+    url: string;
+    icon?: string;
+  }[];  // Array links eksternal (optional)
 }
 
-const projectData: ProjectData[] = [
+// Link button component dengan macOS style
+
+    const MacOSLinkButton = ({ 
+    title, 
+    url, 
+    icon, 
+    isPrimary = false 
+  }: { 
+    title: string; 
+    url: string; 
+    icon?: string;
+    isPrimary?: boolean;
+  }) => {
+    return (
+      <motion.a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`
+          inline-flex items-center gap-2 px-4 py-2 rounded-md 
+          ${isPrimary ? 
+            'bg-blue-500 text-white hover:bg-blue-600' : 
+            'bg-gray-100 text-gray-800 hover:bg-gray-200 border border-gray-200'}
+          transition-all duration-200 font-medium text-sm shadow-sm
+        `}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        {icon && icon.includes('/') ? (
+        <img src={icon} alt={`${title} icon`} className="w-4 h-4" />
+      ) : (
+        <>
+        {icon === 'github' && (
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.605-.015 2.895-.015 3.285 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        )}
+      {icon === 'youtube' && (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.5 6.2c-.3-1-1-1.8-2-2-1.8-.5-9-.5-9-.5s-7.2 0-9 .5c-1 .3-1.7 1-2 2-.5 1.8-.5 5.8-.5 5.8s0 4 .5 5.8c.3 1 1 1.8 2 2 1.8.5 9 .5 9 .5s7.2 0 9-.5c1-.3 1.7-1 2-2 .5-1.8.5-5.8.5-5.8s0-4-.5-5.8zm-13.3 9.3v-7l6 3.5-6 3.5z"/>
+        </svg>
+      )}
+      {icon === 'kaggle' && (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.825 23.859c-.022.092-.097.15-.191.15h-2.866c-.094 0-.145-.058-.181-.135L9.403 12.688l-2.057 2.057v8.98c0 .163-.132.295-.295.295H4.215c-.162 0-.294-.132-.294-.295V.295c0-.162.132-.294.294-.294h2.836c.162 0 .294.132.294.294v9.737l6.306-6.306c.047-.047.109-.073.174-.073h3.128c.133 0 .204.107.154.227L11.24 9.95l7.492 13.735c.049.09.01.204-.084.225l.177-.052z"/>
+        </svg>
+      )}
+      {icon === 'pdf' && (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+        </svg>
+      )}
+      </>
+      )}
+
+      <span>{title}</span>
+    </motion.a>
+  );
+};
+
+const projectsList: ProjectData[] = [
   {
-    id: "HalalLens",
-    company: "Halal Lens",
-    position: "Project Leader",
-    location: "Universitas Pertamina",
-    period: "February 2025 - June 2025",
-    preview:
-      "Contributed to front-end development for Indonesia's largest e-commerce platform",
-    description:
-      "Worked with the front-end development team to enhance user interfaces and implement new features for Tokopedia's web and mobile platforms, focusing on performance optimization and responsive design.",
-    responsibilities: [
-      "Implemented new UI components and features using React.js",
-      "Collaborated with designers to ensure accurate implementation of visual designs",
-      "Optimized front-end performance and page load times",
-      "Participated in code reviews and testing phases",
-      "Contributed to responsive design implementation",
+    id: "SentimentAnalysis",
+    title: "Green Economy Sentiment Analysis",
+    aspect: "Machine Learning & NLP",
+    year: "2025",
+    preview: "Built AI model to analyze Indonesian social media discussions on green economy with 92.6% accuracy",
+    description: [
+    "What do Indonesians really think about renewable energy and green economy? My team and I dove into 1,095 tweets to find out, using machine learning to decode both what people talk about and how they feel about it.",
+    "We built a multi-task learning model using IndoBERT that could simultaneously figure out discussion topics and sentiment. The cool part? We hit 92.6% accuracy on aspect classification and 82.1% on sentiment analysis. Shoutout to my amazing teammates who made this project possible - teamwork definitely made the dream work on this one!"
     ],
-    skills: ["React.js", "TypeScript", "Redux", "Jest", "Responsive Design"],
-    achievements: [
-      "Improved page load time by 15% through code optimization",
-      "Implemented 5+ new features with 100% design accuracy",
-      "Reduced API response time by 20% through optimization",
-      "Participated in successful migration from JavaScript to TypeScript",
+    images: [
+    "/images/projects/sentiment-1.png",
+    "/images/projects/sentiment-2.png",
+    "/images/projects/sentiment-3.png"
     ],
-    images: ["/images/experiences/testsaja.png", "/companies/tokopedia-office.jpg"],
-    details: {
-      // industry: 'E-commerce',
-      // companySize: 'Large (1000+ employees)',
-      // employmentType: 'Internship',
-      highlights: [
-        "Worked in Agile environment with 2-week sprints",
-        "Contributed to Indonesia's largest e-commerce platform",
-        "Gained experience in large-scale web application development",
-        "Collaborated with cross-functional teams including designers, product managers, and backend engineers",
-      ],
-    },
+    documentLink: "/documents/Aspect Sentiment_IndoBERT_Machine Learning.pdf",
   },
   {
-    id: "telkom-indonesia",
-    company: "PT. Telkom Indonesia",
-    position: "UI/UX Design Intern",
-    location: "Bandung, Indonesia",
-    period: "June 2024 - August 2024",
-    preview:
-      "Created user interface designs and conducted usability testing for digital products",
-    description:
-      "Worked with the design team to create user-friendly interfaces for Telkom's digital products. Conducted user research and usability testing to improve user experience and interface design across multiple platforms.",
-    responsibilities: [
-      "Designed user interfaces for web and mobile applications",
-      "Conducted user research and created user personas",
-      "Performed usability testing and presented findings",
-      "Created wireframes, prototypes, and high-fidelity mockups",
-      "Collaborated with development teams during implementation",
+    id: "OrangutanHabitat",
+    title: "Orangutan Habitat Corridor Optimization",
+    aspect: "AI & Conservation Technology",
+    year: "2024",
+    preview: "Applied genetic algorithms to optimize wildlife corridors connecting orangutan habitats in Kalimantan",
+    description: [
+    "I've always been fascinated by wildlife, especially orangutans - these incredible creatures are disappearing from Indonesian forests at an alarming rate. Fun fact: I even sponsored an orangutan named Taymur for 6 months through a conservation program, so this project felt deeply personal to me.",
+    "For my AI final project, I used genetic algorithms to solve a real conservation problem: how to create optimal habitat corridors between Sebangau National Park and Bukit Baka Bukit Raya Forest. The goal was to help orangutans move safely between forest patches without human interference. It's amazing how computational intelligence can contribute to saving species that are so close to extinction."
     ],
-    skills: [
-      "Figma",
-      "Adobe XD",
-      "User Research",
-      "Prototyping",
-      "Usability Testing",
+    images: [
+    "/images/projects/orangutan-1.png",
+    "/images/projects/orangutan-2.png",
+    "/images/projects/orangutan-3.png"
     ],
-    achievements: [
-      "Designed interfaces used by 50,000+ daily users",
-      "Improved user satisfaction scores by 12%",
-      "Created comprehensive design system adopted by 3 teams",
-      "Received excellence recognition for usability testing methodology",
-    ],
-    images: ["/companies/telkom.jpg", "/companies/telkom-office.jpg"],
-    details: {
-      industry: "Telecommunications",
-      companySize: "Enterprise (5000+ employees)",
-      employmentType: "Internship",
-      highlights: [
-        "Worked on digital products used by millions of users",
-        "Gained exposure to enterprise-level design processes",
-        "Collaborated with multidisciplinary teams",
-        "Contributed to Indonesia's largest telecommunications company",
-      ],
+    documentLink: "/documents/Orangutan Habitat_Artificial Intelligence.pdf",
     },
-  },
-  {
-    id: "dicoding",
-    company: "Dicoding Indonesia",
-    position: "Technical Content Writer",
-    location: "Remote",
-    period: "September 2023 - March 2024",
-    preview:
-      "Created technical learning content focusing on web development and machine learning",
-    description:
-      "Developed comprehensive technical learning materials for Dicoding's education platform. Created coding tutorials, explanatory articles, and practical exercises focusing on web development and machine learning topics.",
-    responsibilities: [
-      "Researched and developed technical content for web development courses",
-      "Created hands-on programming exercises and code examples",
-      "Wrote clear explanations for complex technical concepts",
-      "Reviewed and updated existing course materials",
-      "Collaborated with subject matter experts to ensure content accuracy",
-    ],
-    skills: [
-      "Technical Writing",
-      "Web Development",
-      "Machine Learning",
-      "Educational Content Creation",
-    ],
-    achievements: [
-      "Created content accessed by 10,000+ students",
-      "Received 4.8/5 average content quality rating",
-      "Developed 3 comprehensive learning modules",
-      "Contributed to Bangkit Academy curriculum materials",
-    ],
-    images: ["/companies/dicoding.jpg"],
-    details: {
-      industry: "Education Technology",
-      companySize: "Medium (100-500 employees)",
-      employmentType: "Part-time",
-      highlights: [
-        "Developed educational content used by thousands of students",
-        "Expanded technical knowledge across multiple domains",
-        "Improved technical communication and teaching skills",
-        "Contributed to Indonesia's leading tech education platform",
+    {
+      id: "CO2Prediction",
+      title: "CO2 Emission Prediction Model",
+      aspect: "Mathematical Modeling & Data Science",
+      year: "2024",
+      preview: "Compared three statistical models to predict Indonesia's CO2 emissions through 2030",
+      description: [
+      "Climate change isn't just a buzzword for me - it's the defining challenge of our generation. For my Mathematical Modeling final project, I wanted to tackle something that actually matters: predicting Indonesia's CO2 emissions trajectory to 2030.",
+      "I put three different approaches head-to-head: Exponential, Logistic, and Holt-Winters Exponential Smoothing models. The goal was figuring out which method gives us the most reliable forecast for environmental policy planning. Spoiler alert: the data tells some pretty sobering stories about where we're headed if we don't change course soon."
       ],
-    },
-  },
-  {
-    id: "google-dsc",
-    company: "Google Developer Student Club",
-    position: "Core Team Member",
-    location: "University of Indonesia",
-    period: "August 2023 - July 2024",
-    preview:
-      "Led technical workshops and mentored students in Google technologies",
-    description:
-      "Served as a core team member for Google Developer Student Club at the University of Indonesia. Organized and led technical workshops, mentored fellow students, and helped build a community of developers focused on Google technologies.",
-    responsibilities: [
-      "Organized technical workshops and coding sessions",
-      "Mentored students in mobile and web development",
-      "Coordinated hackathons and collaborative coding events",
-      "Facilitated communication between students and Google Developer experts",
-      "Created educational resources on Google technologies",
-    ],
-    skills: [
-      "Leadership",
-      "Event Management",
-      "Android Development",
-      "Google Cloud",
-      "Public Speaking",
-    ],
-    achievements: [
-      "Led 12+ successful technical workshops with 300+ attendees",
-      "Organized hackathon with 150+ participants",
-      "Increased club membership by 40%",
-      "Received recognition from Google for community building",
-    ],
-    images: ["/companies/gdsc.jpg", "/companies/gdsc-event.jpg"],
-    details: {
-      industry: "Education / Community",
-      companySize: "Student Organization",
-      employmentType: "Volunteer",
-      highlights: [
-        "Developed leadership and communication skills",
-        "Built technical community within university setting",
-        "Expanded network with Google professionals",
-        "Gained experience in organizing technical events and workshops",
+      images: [
+      "/images/projects/co2-1.png",
+      "/images/projects/co2-2.png",
+      "/images/projects/co2-3.png"
       ],
-    },
-  },
-  {
-    id: "freelance",
-    company: "Freelance",
-    position: "Web Developer",
-    location: "Remote",
-    period: "2022 - Present",
-    preview:
-      "Developed custom websites and applications for various clients across industries",
-    description:
-      "Provided freelance web development services for multiple clients across different industries. Designed and developed custom websites, focusing on responsive design, performance optimization, and meeting client requirements.",
-    responsibilities: [
-      "Designed and developed custom websites from scratch",
-      "Collaborated with clients to define project requirements",
-      "Created responsive layouts for optimal viewing across devices",
-      "Implemented custom functionalities based on client needs",
-      "Provided maintenance and support services",
-    ],
-    skills: [
-      "HTML/CSS",
-      "JavaScript",
-      "React",
-      "WordPress",
-      "Client Management",
-    ],
-    achievements: [
-      "Completed 15+ projects with 100% client satisfaction",
-      "Maintained 90% client retention rate",
-      "Reduced average page load time to under 2 seconds",
-      "Implemented SEO optimizations resulting in traffic increases",
-    ],
-    images: ["/companies/freelance.jpg"],
-    details: {
-      industry: "Various",
-      companySize: "Independent",
-      employmentType: "Freelance",
-      highlights: [
-        "Built portfolio of diverse projects across multiple industries",
-        "Developed client management and communication skills",
-        "Managed complete project lifecycle independently",
-        "Gained experience in estimating, scoping, and delivering projects",
+      documentLink: "/documents/Comparative CO2_Math Modelling.pdf"
+      },
+      {
+      id: "CustomerSegmentation",
+      title: "Customer Segmentation Analysis",
+      aspect: "Data Science & Business Intelligence",
+      year: "2024",
+      preview: "Implemented K-Means clustering for customer behavior analysis on Kaggle platform",
+      description: [
+      "Ever wondered how companies like Netflix or Spotify seem to know exactly what you want? That's customer segmentation in action. I decided to dive into this on Kaggle using K-Means clustering to decode customer behavior patterns.",
+      "The project involved analyzing purchase data to group customers based on their shopping habits and preferences. I built the entire pipeline from data preprocessing to model evaluation, then visualized the clusters to make business sense of the patterns. It's fascinating how unsupervised learning can reveal hidden customer groups that marketing teams never knew existed."
       ],
-    },
-  },
+      images: [
+      "/images/projects/segmentation-1.png",
+      "/images/projects/segmentation-2.png",
+      "/images/projects/segmentation-3.png"
+      ],
+      externalLinks: [
+        {
+          title: "Kaggle",
+          url: "https://www.kaggle.com/code/mandayash/customer-segmentation-with-k-means-clustering",
+          icon: "/icons/kaggle.png"
+        }
+      ]
+    }
+
 ];
+
+
 
 // Image Carousel Component
 // Upgrade ImageCarousel dengan animasi Cover Flow bergaya macOS
@@ -261,7 +187,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
   if (images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200 shadow-inner">
+    <div className="relative w-full aspect-[16/9] md:aspect-[16/9] mb-6 rounded-lg overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200">
       {/* macOS style subtle shadow on top and bottom */}
       <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
       <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
@@ -333,7 +259,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
             <motion.img
               src={images[nextImageIndex]}
               alt={`Next image`}
-              className="w-full h-5/6 object-cover rounded-lg shadow-lg"
+              className="w-full h-4/5 object-cover rounded-lg shadow-lg"
               style={{ filter: "blur(1px) brightness(0.7)" }}
             />
           </motion.div>
@@ -350,7 +276,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
             <motion.img
               src={images[prevImageIndex]}
               alt={`Previous image`}
-              className="w-full h-5/6 object-cover rounded-lg shadow-lg"
+              className="w-full h-4/5 object-cover rounded-lg shadow-lg"
               style={{ filter: "blur(1px) brightness(0.7)" }}
             />
           </motion.div>
@@ -362,7 +288,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
         <>
           <motion.button
             onClick={prevImage}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -374,7 +300,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
           
           <motion.button
             onClick={nextImage}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md hover:bg-white"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -414,8 +340,16 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
 
 const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
   const [selectedProject, setSelectedProject] = useState<ProjectData>(
-    projectData[0]
-  );
+  projectsList[0] || {
+    id: "",
+    title: "",
+    aspect: "",
+    year: "",
+    preview: "",
+    description: [],
+    images: []
+  }
+);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -482,14 +416,14 @@ const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
       <DraggableSafariWindow
         id="experienceWindow"
         title=""
-        url="amanda.portfolio/experience"
+        url="amanda.portfolio/projects"
         state={windowState}
         onUpdate={updateWindow}
         onClose={onClose}
         onFocus={focusWindow}
       >
         {/* Content Area */}
-        <div className={`flex ${isMobile ? "flex-col" : "flex-row"} h-full`}>
+        <div className={`flex ${isMobile ? "flex-col" : "flex-row"} h-full font-sf`}>
           {/* Sidebar - Experience List */}
           <div
             className={`${
@@ -498,10 +432,10 @@ const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
           >
             <div className="p-4">
               <h2 className="text-lg font-semibold mb-4 text-gray-800">
-                Professional Experience
+                Projects
               </h2>
               <div className="space-y-2">
-                {projectData.map((project) => (
+                {projectsList.map((project) => (
                   <motion.div
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
@@ -514,34 +448,19 @@ const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-medium text-sm text-gray-800 leading-tight">
-                        {project.company}
+                      <h3 className="font-medium text-sm text-gray-800 leading-tight font-sf">
+                        {project.title}
                       </h3>
-                      <span className="text-xs text-gray-500 ml-2 whitespace-nowrap">
-                        {project.period.split(" - ")[0]}
+                      <span className="text-xs text-gray-500 ml-2 whitespace-nowrap text-justify font-sf">
+                        {project.year}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600 mb-2">
-                      {project.position}
+                    <p className="text-xs text-gray-600 mb-2 text-justify font-sf">
+                      {project.aspect}
                     </p>
-                    <p className="text-xs text-gray-500 line-clamp-2">
+                    <p className="text-xs text-gray-500 line-clamp-2 text-justify font-sf">
                       {project.preview}
                     </p>
-                    <div className="flex flex-wrap gap-1 mt-2">
-                      {project.skills.slice(0, 2).map((skill, index) => (
-                        <span
-                          key={index}
-                          className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                      {project.skills.length > 2 && (
-                        <span className="text-xs text-gray-500">
-                          +{project.skills.length - 2}
-                        </span>
-                      )}
-                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -562,152 +481,59 @@ const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Experience Header */}
+                {/* Projects Header */}
                 <div className="mb-6">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">
-                      {selectedProject.position}
+                      {selectedProject.aspect}
                     </span>
                     <span className="text-sm text-gray-500">
-                      {selectedProject.period}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      • {selectedProject.location}
+                      {selectedProject.year}
                     </span>
                   </div>
                   <h1 className="text-2xl font-bold text-gray-800 mb-3">
-                    {selectedProject.company}
+                    {selectedProject.title}
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
-                    {selectedProject.description}
-                  </p>
+                  <div className="text-gray-600 leading-relaxed space-y-4">
+                    {selectedProject.description.map((paragraph, index) => (
+                      <p key={index} className="text-justify font-sf">{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Project Links Section */}
+                {selectedProject && (selectedProject.documentLink || selectedProject.externalLinks?.length > 0) && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-gray-800 font-sf">
+                      Project Resources
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {/* PDF Report Button */}
+                      {selectedProject.documentLink && (
+                        <MacOSLinkButton
+                          title="View Full Report"
+                          url={selectedProject.documentLink}
+                          icon="pdf"
+                          isPrimary={true}
+                        />
+                      )}
+                      
+                      {/* External Links */}
+                      {selectedProject.externalLinks?.map((link, index) => (
+                        <MacOSLinkButton
+                          key={index}
+                          title={link.title}
+                          url={link.url}
+                          icon={link.icon}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Image Carousel */}
                 <ImageCarousel images={selectedProject.images} />
-
-                {/* Experience Details */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-gray-800">
-                      Company Details
-                    </h3>
-                    <div className="space-y-2 text-sm">
-                      {selectedProject.details.industry && (
-                        <div className="flex">
-                          <span className="font-medium w-28">Industry:</span>
-                          <span>{selectedProject.details.industry}</span>
-                        </div>
-                      )}
-                      {selectedProject.details.companySize && (
-                        <div className="flex">
-                          <span className="font-medium w-28">
-                            Company Size:
-                          </span>
-                          <span>{selectedProject.details.companySize}</span>
-                        </div>
-                      )}
-                      {selectedProject.details.employmentType && (
-                        <div className="flex">
-                          <span className="font-medium w-28">
-                            Position Type:
-                          </span>
-                          <span>
-                            {selectedProject.details.employmentType}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-gray-800">Skills Utilized</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.skills.map((skill, index) => {
-                        // Tentukan warna berdasarkan jenis skill atau index untuk variasi
-                        const colors = ['blue', 'purple', 'pink', 'green', 'yellow', 'red', 'gray'];
-                        let color: any = colors[index % colors.length];
-                        
-                        // Atau assign warna berdasarkan kategori skill
-                        if (skill.toLowerCase().includes('react')) color = 'blue';
-                        if (skill.toLowerCase().includes('python')) color = 'green';
-                        if (skill.toLowerCase().includes('typescript')) color = 'blue';
-                        if (skill.toLowerCase().includes('design')) color = 'pink';
-                        if (skill.toLowerCase().includes('testing')) color = 'purple';
-                        if (skill.toLowerCase().includes('management')) color = 'red';
-                        if (skill.toLowerCase().includes('writing')) color = 'yellow';
-                        
-                        return (
-                          <MacOSSkillTag 
-                            key={index} 
-                            skill={skill} 
-                            color={color}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                  </div>
-
-                {/* Key Responsibilities */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800">
-                    Key Responsibilities
-                  </h3>
-                  <ul className="space-y-2">
-                    {selectedProject.responsibilities.map(
-                      (responsibility, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
-                        >
-                          <span className="text-blue-500 mt-1">•</span>
-                          <span>{responsibility}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-
-                {/* Experience Highlights */}
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800">
-                    Experience Highlights
-                  </h3>
-                  <ul className="space-y-2">
-                    {selectedProject.details.highlights.map(
-                      (highlight, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
-                        >
-                          <span className="text-purple-500 mt-1">★</span>
-                          <span>{highlight}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-
-                {/* Achievements */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800">
-                    Achievements
-                  </h3>
-                  <ul className="space-y-2">
-                    {selectedProject.achievements.map(
-                      (achievement, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-gray-600"
-                        >
-                          <span className="text-green-500 mt-1">✓</span>
-                          <span>{achievement}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
+                
               </motion.div>
             </AnimatePresence>
           </div>

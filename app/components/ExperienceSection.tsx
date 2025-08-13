@@ -221,11 +221,11 @@ achievements: [
 "Turned design theory into something 16-year-olds actually enjoyed learning"
 ],
 images: [
-"/images/experiences/bazma-0.jpeg",
-"/images/experiences/bazma-1.jpeg",
-"/images/experiences/bazma-2.jpeg",
-"/images/experiences/bazma-3.jpeg",
-"/images/experiences/bazma-4.jpeg"
+"/images/experiences/bazma-0.JPEG",
+"/images/experiences/bazma-1.JPEG",
+"/images/experiences/bazma-2.JPEG",
+"/images/experiences/bazma-3.JPEG",
+"/images/experiences/bazma-4.JPEG"
 ],
 }
 
