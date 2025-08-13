@@ -44,218 +44,189 @@ const experienceData: ExperienceData[] = [
     skills: ["Project Managements", "User Research & Requirements Gathering", "UI/UX Design Principles", "Agile Development"],
     achievements: [
       "Successfully delivered project within 4-month timeline with 5-member team",
-      "We Won 'Best UI/UX Design' award at final project exhibition",
-      "Appreciated as 'Most Inclusive Application' recognition for accessibility features",
+      "We Won 'Best UI/UX Design' award at final project exhibition"
     ],
     images: ["/images/experiences/halallens-1.png", "/images/experiences/halallens-2.png", "/images/experiences/halallens-3.png", "/images/experiences/halallens-4.png", "/images/experiences/halallens-5.png", "/images/experiences/halallens-6.png", "/images/experiences/halallens-7.png"],
   },
   {
- id: "TryFitBar",
- company: "TRYFITBAR",
- position: "Social Media Strategist & Content Analyst",
- location: "UAE (Remote)",
- period: "April 2025 - July 2025",
- preview: "Revitalized dormant social media presence for UAE-based healthy meal delivery brand, achieving 105.3% increase in views",
- description: [
-   "TRYFITBAR is a UAE-based healthy meal delivery brand that had been struggling with dormant social media presence for months. As their Social Media Strategist & Content Analyst, I was brought in to rebuild their digital footprint and reconnect with their audience through strategic content planning and data-driven approaches.",
-   "My role involved comprehensive social media revitalization, from analyzing previous performance gaps to developing fresh content strategies that resonated with health-conscious consumers in the UAE market. The focus was on creating engaging, culturally relevant content that showcased their healthy meal options while building genuine community engagement across multiple platforms."
- ],
- responsibilities: [
-   "Analyzed and revitalized dormant social media accounts after months of brand inactivity",
-   "Developed integrated content strategy across Instagram and Facebook platforms",
-   "Created and executed 50+ pieces of content including feeds, stories, and reels",
-   "Monitored and analyzed social media performance metrics to optimize content strategy",
-   "Implemented cross-platform content mirroring to maximize reach and engagement"
- ],
- skills: [
-   "Social Media Strategy", 
-   "Content Creation & Planning", 
-   "Performance Analytics", 
-   "Cross-Platform Marketing", 
-   "Brand Revitalization",
-   "Remote Collaboration"
- ],
- achievements: [
-   "Achieved 105.3% increase in social media views, reaching 380K+ total views",
-   "Generated 7.9% growth in reach with 134K+ people reached across platforms",
-   "Delivered 306.5% surge in content interactions and audience engagement",
-   "Maintained steady website traffic at 3.7K visits during campaign period",
-   "Successfully produced and published 50+ pieces of strategic content in 4 months",
-   "Rebuilt brand visibility from dormant state to active, engaging social presence"
- ],
- images: [
-   "/images/experiences/fitbar-1.png", 
-   "/images/experiences/fitbar-2.png", 
-   "/images/experiences/fitbar-3.png", 
-   "/images/experiences/fitbar-4.png", 
- ],
+  id: "TryFitBar",
+  company: "TRYFITBAR",
+  position: "Social Media Strategist & Content Analyst",
+  location: "UAE (Remote)",
+  period: "April 2025 - July 2025",
+  preview: "Brought an inactive UAE food brand back to life with 105% view growth and 50+ strategic content pieces",
+  description: [
+    "TRYFITBAR's social media had been inactive for months. I jumped in to rebuild their digital presence from scratch, focusing on authentic engagement.",
+    "My approach was simple: analyze what went wrong, create content that actually works, and use data to guide every decision. The result? A brand that went from invisible to engaging in just 4 months."
+  ],
+  responsibilities: [
+    "Reactivated Instagram and Facebook accounts with strategic content planning",
+    "Created 50+ engaging posts, stories, and reels built for UAE market",
+    "Tracked performance metrics and optimized content strategy based on data insights",
+    "Managed cross-platform content distribution for maximum reach"
+  ],
+  skills: [
+    "Social Media Strategy", 
+    "Content Creation", 
+    "Performance Analytics", 
+    "Brand Revitalization",
+    "Remote Collaboration"
+  ],
+  achievements: [
+    "105% increase in views (380K+ total)",
+    "7.9% growth in reach (134K+ people)",
+    "306% surge in content interactions", 
+    "Maintained 3.7K steady website visits",
+    "Transformed dormant brand into active, interactive brand"
+  ],
+  images: [
+    "/images/experiences/fitbar-1.png", 
+    "/images/experiences/fitbar-2.png", 
+    "/images/experiences/fitbar-3.png", 
+    "/images/experiences/fitbar-4.png", 
+  ],
 },
 {
- id: "MeetsinID",
- company: "Meetsin.ID",
- position: "Junior Front-End Engineer",
- location: "Palembang, Indonesia",
- period: "December 2024 - May 2025",
- preview: "Developed CRM web application for LRT Sumatera Selatan, serving 30+ admin users and managing thousands of mobile user data",
- description: [
-   "Meetsin.ID is a technology company based in Palembang that develops digital solutions for various clients. During my internship as Junior Front-End Engineer, I worked on a customer relationship management web application specifically designed for LRT Sumatera Selatan to streamline their administrative operations and customer data management.",
-   "The project involved creating a comprehensive web-based CRM system that bridges the gap between administrative staff and mobile app users. My focus was on developing user-friendly interfaces that could efficiently handle large volumes of data while maintaining optimal performance and user experience for the administrative team."
- ],
- responsibilities: [
-   "Developed 10-18 user interface components for customer relationship management system",
-   "Implemented frontend solutions using React.js and JavaScript frameworks",
-   "Integrated RESTful APIs to ensure seamless data flow between frontend and backend systems",
-   "Participated in agile development processes including daily stand-ups and sprint planning",
-   "Collaborated with cross-functional teams to deliver scalable web application solutions"
- ],
- skills: [
-   "React.js",
-   "JavaScript",
-   "RESTful API Integration",
-   "Frontend Development",
-   "Agile Development",
-   "UI/UX Implementation",
-   "Team Collaboration"
- ],
- achievements: [
-   "Successfully developed and deployed CRM web application within 6-month timeline",
-   "Served 30+ administrative users with efficient and user-friendly interface",
-   "Managed data integration for thousands of mobile app users seamlessly",
-   "Contributed to 10-18 reusable UI components for the application architecture",
-   "Actively participated in agile methodologies improving team productivity and project delivery",
-   "Gained practical experience in enterprise-level web application development"
- ],
- images: [
-   "/images/experiences/meetsin-0.png",
-   "/images/experiences/meetsin-1.png",
-   "/images/experiences/meetsin-2.png",
-   "/images/experiences/meetsin-3.png"
- ],
+id: "MeetsinID",
+company: "Meetsin.ID",
+position: "Junior Front-End Engineer",
+location: "Palembang, Indonesia",
+period: "December 2024 - May 2025",
+preview: "Built CRM web app for Indonesia's LRT system - handling 30+ admins and thousands of user data points",
+description: [
+"Meetsin.ID builds digital solutions for Indonesian companies. I joined their team to create a CRM web app for LRT Sumatera Selatan - basically helping train operators manage their customer data better.",
+"My job was making sure the interface actually worked for real people. Admin staff needed to handle tons of user data without wanting to throw their computers out the window. 😅"
+],
+responsibilities: [
+"Built 15+ UI components for the CRM dashboard using React.js",
+"Connected frontend to backend through RESTful API integration",
+"Joined daily standups and sprint planning (got my first taste of real agile workflow in real work)",
+"Worked with backend devs and designers to ship features on time"
+],
+skills: [
+"React.js",
+"JavaScript",
+"RESTful APIs",
+"Frontend Development",
+"Agile/Scrum",
+"Team Collaboration"
+],
+achievements: [
+"Delivered working CRM in 6 months",
+"30+ admin users actually enjoyed using the interface (rare win!)",
+],
+images: [
+"/images/experiences/meetsin-0.png",
+"/images/experiences/meetsin-1.png",
+"/images/experiences/meetsin-2.png",
+"/images/experiences/meetsin-3.png"
+],
 },
 {
- id: "UIUXINDO",
- company: "UIUXINDO",
- position: "Junior Data Analyst & Content Strategist",
- location: "Jakarta, Indonesia",
- period: "May 2023 - April 2025",
- preview: "Grew social media following from 9K to 19K followers (111% growth) through data-driven content strategy and analytics",
- description: [
-   "UIUXINDO is a leading UI/UX design community in Indonesia that organizes events, workshops, and educational content for design professionals. As Junior Data Analyst & Content Strategist, I was responsible for leveraging data insights to optimize their digital presence and improve event engagement rates across multiple platforms.",
-   "My role involved combining data analysis with content strategy to drive measurable growth in community engagement and event participation. I worked closely with the marketing team to implement data-driven approaches that significantly improved their social media performance and event registration rates over a 2-year period."
- ],
- responsibilities: [
-   "Analyzed user engagement data and metrics to optimize content strategy for increased event registration",
-   "Implemented data-driven decision making processes that improved performance tracking capabilities",
-   "Collaborated with cross-functional teams to develop analytics dashboards using Meta Business Suite",
-   "Applied statistical analysis and A/B testing methodologies to enhance campaign effectiveness",
-   "Created comprehensive reporting systems to track social media growth and engagement metrics"
- ],
- skills: [
-   "Data Analysis",
-   "Content Strategy",
-   "Statistical Analysis",
-   "A/B Testing",
-   "Meta Business Suite",
-   "Performance Analytics",
-   "Social Media Analytics",
-   "Dashboard Development"
- ],
- achievements: [
-   "Achieved 111% increase in social media following, growing from 9K to 19K followers over 2 years",
-   "Improved performance tracking capabilities by 111% through data-driven implementation",
-   "Successfully optimized content strategy resulting in increased event registration rates",
-   "Developed comprehensive analytics dashboard for cross-functional team collaboration",
-   "Applied A/B testing methodologies that enhanced strategic campaign effectiveness",
-   "Maintained consistent growth trajectory over 24-month period through sustained data analysis"
- ],
- images: [
-   "/images/experiences/uiuxindo-1.png",
-   "/images/experiences/uiuxindo-2.png"
- ],
+id: "UIUXINDO",
+company: "UIUXINDO",
+position: "Junior Data Analyst & Content Strategist",
+location: "Jakarta, Indonesia",
+period: "May 2023 - April 2025",
+preview: "Doubled Indonesia's biggest design community from 9K to 19K followers using data-smart content strategy",
+description: [
+"UIUXINDO is Indonesia's go-to design community - think workshops, events, and everything UI/UX. I spent 2 years figuring out what makes designers tick on social media and turning those insights into content that actually works."
+],
+responsibilities: [
+// "Crunched engagement data to boost event sign-ups and community participation",
+// "Built analytics dashboards in Meta Business Suite that everyone could actually understand",
+// "Ran A/B tests on content to see what clicked with the design community",
+// "Turned messy social media metrics into clear growth strategies"
+],
+skills: [
+"Data Analysis",
+"Content Strategy",
+"A/B Testing",
+"Meta Business Suite",
+"Social Media Analytics"
+],
+achievements: [
+"Doubled followers from 9K to 19K in 2 years (111% growth)",
+"Boosted performance tracking by 111% with better data systems",
+"Higher event registration (Product Design Festival and Product Design Challenges) rates through smarter content targeting"
+],
+images: [
+"/images/experiences/uiuxindo-1.png",
+"/images/experiences/uiuxindo-2.png"
+],
 },
 {
- id: "UnipertaminaTA",
- company: "Practicum Assistant - Database",
- position: "Database Management & Analytics Assistant",
- location: "Jakarta, Indonesia",
- period: "August 2024 - January 2025",
- preview: "Achieved 90% student pass rate while teaching Oracle Database and SQL programming to 40+ students",
- description: [
-   "As a Teaching Assistant at Universitas Pertamina, I supported the Database Management and Analytics course by providing hands-on guidance to students learning Oracle Database and SQL programming. My role involved bridging the gap between theoretical concepts and practical application, ensuring students gained both technical skills and analytical thinking capabilities.",
-   "Working directly with 40+ students, I focused on creating an engaging learning environment that made complex database concepts accessible and practical. I developed supplementary materials and provided personalized technical assistance to help students master database optimization techniques and statistical analysis methods."
- ],
- responsibilities: [
-   "Taught Oracle Database and SQL programming fundamentals to 40+ undergraduate students",
-   "Created supplementary learning materials focusing on database optimization and query performance",
-   "Provided one-on-one technical assistance for complex database management concepts",
-   "Assisted students with statistical analysis and data visualization techniques",
-   "Conducted practical lab sessions and troubleshooted technical issues during coursework"
- ],
- skills: [
-   "Oracle Database",
-   "SQL Programming",
-   "Database Optimization",
-   "Statistical Analysis",
-   "Data Visualization",
-   "Teaching & Mentoring",
-   "Technical Documentation",
-   "Problem Solving"
- ],
- achievements: [
-   "Achieved impressive 90% student pass rate in Database Management course",
-   "Successfully taught and mentored 40+ students in Oracle Database and SQL programming",
-   "Developed comprehensive supplementary learning materials for database optimization",
-   "Improved student understanding of query performance and database design principles",
-   "Provided effective technical assistance that enhanced student learning outcomes",
-   "Contributed to curriculum enhancement through practical, hands-on teaching approaches"
- ],
- images: [
-   "/images/experiences/uniper-ta-1.png",
-   "/images/experiences/uniper-ta-2.png",
-   "/images/experiences/uniper-ta-3.png"
- ],
+id: "UnipertaminaTA",
+company: "Universitas Pertamina",
+position: "Database Teaching Assistant",
+location: "Jakarta, Indonesia",
+period: "August 2024 - January 2025",
+preview: "Hit 90% pass rate teaching Oracle DB and SQL to 40+ students who actually didn't hate databases by the end 🥰",
+description: [
+"I helped 40+ computer science students wrap their heads around Oracle Database and SQL without losing their sanity.",
+"My approach was simple: make scary database concepts feel less scary. I created extra materials, ran lab sessions, and basically became the person students came to when their queries wouldn't work."
+],
+responsibilities: [
+"Taught Oracle Database and SQL basics to 40+ undergrads in lab sessions",
+"Created study guides that actually made sense (students loved these)",
+"Helped debug broken queries and explained why databases hate poorly written code"
+],
+skills: [
+"Oracle Database",
+"SQL Programming",
+"Teaching & Mentoring",
+"Technical Troubleshooting",
+"Study Material Creation"
+],
+achievements: [
+"90% pass rate (way above average for database courses)",
+"40+ students who can now write decent SQL queries",
+"Created supporting study materials"
+],
+images: [
+"/images/experiences/uniper-ta-1.png",
+"/images/experiences/uniper-ta-2.png",
+"/images/experiences/uniper-ta-3.png"
+],
 },
 {
- id: "SMKTIBazma",
- company: "SMK TI Bazma",
- position: "UI/UX Teaching Intern",
- location: "Bogor, Indonesia",
- period: "August 2023 - November 2023",
- preview: "Taught UI/UX design fundamentals and design thinking methodology to high school students with positive evaluation",
- description: [
-   "SMK TI Bazma is a vocational high school in Bogor specializing in Information Technology education. As a UI/UX Teaching Intern, I had the opportunity to introduce high school students to the fundamentals of user interface and user experience design, preparing them for potential careers in the growing digital design industry.",
-   "My role involved developing age-appropriate curriculum that made complex design concepts accessible to teenagers while building their practical skills in design thinking and user research. I also focused on developing their communication skills, which are essential for design professionals when presenting ideas to stakeholders and clients."
- ],
- responsibilities: [
-   "Taught UI/UX design fundamentals including design hierarchy and visual design principles",
-   "Introduced students to user research concepts and design thinking methodology",
-   "Delivered technical training sessions on public communication strategies",
-   "Developed stakeholder presentation skills through practical exercises and mock presentations",
-   "Created engaging lesson plans tailored for high school students' learning capabilities"
- ],
- skills: [
-   "UI/UX Design Teaching",
-   "Design Thinking",
-   "User Research Methods",
-   "Public Communication",
-   "Presentation Skills",
-   "Curriculum Development",
-   "Student Engagement",
-   "Educational Technology"
- ],
- achievements: [
-   "Successfully completed 4-month teaching internship with positive evaluation from administration",
-   "Effectively taught UI/UX design fundamentals to high school students",
-   "Developed practical communication and presentation skills among students",
-   "Created engaging curriculum that made complex design concepts accessible to teenagers",
-   "Built foundation knowledge in design thinking methodology for future IT professionals",
-   "Received commendable feedback for innovative teaching approaches and student engagement"
- ],
- images: [
-   "/images/experiences/smk-bazma-1.png",
-   "/images/experiences/smk-bazma-2.png",
-   "/images/experiences/smk-bazma-3.png"
- ],
+id: "SMKTIBazma",
+company: "SMK TI Bazma",
+position: "UI/UX Teaching Intern",
+location: "Bogor, Indonesia",
+period: "August 2023 - October 2023",
+preview: "Introduced high schoolers to UI/UX design - turned tech-curious teenagers into mini design thinkers",
+description: [
+"SMK TI Bazma is a tech-focused vocational school in Bogor. ",
+"The challenge? Making design theory interesting for teenagers while teaching them skills they'd actually use. I focused on hands-on projects and real-world examples they could relate to."
+],
+responsibilities: [
+"Broke down UI/UX basics like design hierarchy and visual principles for beginners",
+"Taught design thinking through fun, practical exercises (not boring theory)",
+"Helped students practice presenting their ideas without freezing up",
+"Created lessons materials that kept teenagers engaged (harder than it sounds)"
+],
+skills: [
+"UI/UX Teaching",
+"Design Thinking",
+"User Research Basics",
+"Presentation Coaching",
+"Student Engagement"
+],
+achievements: [
+"Completed 2-month internship with glowing reviews from teachers",
+"Got high schoolers excited about user experience (no small feat)",
+"Students could present their design ideas confidently by the end",
+"Created lesson plans that other teachers still use",
+"Turned design theory into something 16-year-olds actually enjoyed learning"
+],
+images: [
+"/images/experiences/bazma-0.jpeg",
+"/images/experiences/bazma-1.jpeg",
+"/images/experiences/bazma-2.jpeg",
+"/images/experiences/bazma-3.jpeg",
+"/images/experiences/bazma-4.jpeg"
+],
 }
 
 ];
