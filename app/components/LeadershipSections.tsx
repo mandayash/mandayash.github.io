@@ -88,8 +88,8 @@ const leadershipList: LeadershipData[] = [
     year: "2025",
     preview: "Coordinated national green industry forum with 39 C-level speakers and 150+ participants",
     description: [
-    "Managing 39 expert speakers including ministry directors and C-level executives sounds intense, right? That's exactly what I did as Liaison Officer Coordinator for Indonesia Green Connect 2025 at ITB. This wasn't just any forum - we were tackling Indonesia's Net Zero Emission 2060 roadmap with some of the country's top sustainability leaders.",
-    "The real challenge hit when we had last-minute panel schedule changes (classic event management nightmare). But my team and I adapted quickly, kept all speakers coordinated, and delivered 7 strategic discussions without a hitch. Seeing 150+ participants engaged in conversations about Indonesia's green future made all those stressful coordination calls worth it."
+    "Managing 39 expert speakers including ministry directors and C-level executives sounds intense, right? That's exactly what me and IGC Team did as Liaison Officer Coordinator for Indonesia Green Connect 2025 at ITB. This wasn't just any forum - we were addressed Indonesia's Net Zero Emission 2060 roadmap with some of the country's top sustainability leaders.",
+    "The real challenge hit when we had last-minute panel schedule changes (classic event management nightmare 😱). But my team and I adapted quickly, kept all speakers coordinated, and delivered 7 strategic discussions without a problem. Seeing 150+ participants engaged in conversations about Indonesia's green future made all those stressful coordination calls worth it."
     ],
     images: [
     "/images/leadership/igc-0.png",
@@ -106,13 +106,17 @@ const leadershipList: LeadershipData[] = [
     year: "2025",
     preview: "Only Indonesian selected for 3-week marine energy program in Brest, France",
     description: [
+    "Bonjour!",
     "Picture this: being the only Indonesian among international students studying marine energy in Brest, France. That's how I spent 3 weeks diving deep into Science and Technology of the Sea, focusing on renewable marine energy and oceanic innovations that could transform how we think about sustainable power.",
-    "The program was intense - French language immersion, cutting-edge maritime research, and collaborating with students from around the world. It wasn't just about marine technology; it was about seeing how different cultures approach sustainability challenges. Plus, my French definitely went from zero to 'can order coffee without pointing at the menu' by the end!"
+    "The program was intense - French language learning, advanced maritime research, and collaborating with students from around the world. It wasn't just about marine technology; it was about seeing how different cultures approach sustainability challenges. Plus, my French definitely went from zero to 'can order coffee without pointing at the menu' by the end! ☕"
     ],
     images: [
-    "/images/leadership/france-1.png",
-    "/images/leadership/france-2.png",
-    "/images/leadership/france-3.png"
+    "/images/leadership/france-1.jpeg",
+    "/images/leadership/france-2.jpeg",
+    "/images/leadership/france-3.jpeg",
+    "/images/leadership/france-4.jpeg",
+    "/images/leadership/france-5.jpeg",
+    "/images/leadership/france-6.jpg"
     ],
     },
     {
@@ -120,15 +124,14 @@ const leadershipList: LeadershipData[] = [
     title: "Research Methodology Workshop Speaker",
     aspect: "Academic Speaking & Education",
     year: "2024",
-    preview: "Delivered research fundamentals presentation to 50+ computer science freshmen",
+    preview: "Delivered research fundamentals presentation to 50+ computer science first-year students",
     description: [
-    "Remember being a confused freshman wondering how academic research actually works? I definitely do. That's why when I was asked to speak at Computer Science Student Orientation at my university, I jumped at the chance to demystify research for 50+ new students who were probably feeling just as lost as I once was.",
-    "I covered everything from research ideation to competition opportunities, scientific report structure, and methodology basics. The best part? Seeing those 'aha!' moments when students realized research isn't some scary academic monster - it's actually a systematic way to solve problems they care about. The engagement and questions afterward showed they were genuinely excited to start their research journey."
+    "Remember being a confused first-year wondering how academic research actually works? I definitely do. That's why when I was asked to speak at Computer Science Student Orientation at my university, I jumped at the chance to explain clearly research for 50+ new students who were probably feeling just as lost as I once was. 😅😅",
+    "I covered everything from research ideation to competition opportunities, scientific report structure, and methodology basics. The engagement and questions after the discussion showed they were trully excited to start their research journey."
     ],
     images: [
-    "/images/leadership/research-speaker-1.png",
-    "/images/leadership/research-speaker-2.png",
-    "/images/leadership/research-speaker-3.png"
+    "/images/leadership/research-speaker-1.jpeg",
+    "/images/leadership/research-speaker-2.jpeg"
     ],
     },
     {
@@ -136,15 +139,18 @@ const leadershipList: LeadershipData[] = [
     title: "Tech Savvy Generation Guest Speaker",
     aspect: "Technology Education & Youth Development",
     year: "2024",
-    preview: "Presented cutting-edge tech trends to IT students at SMK TI Bazma school orientation",
+    preview: "Presented tech trends to IT students at SMK TI Bazma school orientation",
     description: [
-    "What's cooler than talking about AI, AR/VR, and IoT to a room full of eager IT students? That's exactly what I did at SMK TI Bazma's school orientation, presenting 'Tech Savvy Generation: Preparing Young People for the Digital Era' to students who were just starting their tech journey.",
-    "I covered everything from Indonesia's digital landscape to future challenges like cybersecurity and job automation. But the real magic happened during the Q&A session - these students asked incredibly thoughtful questions about adaptability, critical thinking, and digital collaboration. It reminded me why I love sharing knowledge: seeing young minds get excited about the endless possibilities in tech."
+    "What's cooler than talking about AI, AR/VR, and IoT to a room full of excited IT students 🧑‍💻👩‍💻? That's exactly what I did at SMK TI Bazma's school orientation, presenting 'Tech Savvy Generation: Preparing Young People for the Digital Era' to students who were just starting their tech journey.",
+    "I explained everything from Indonesia's technology to future challenges like job automation and job pitching. It reminded me why I love sharing knowledge: seeing young minds get excited about the endless possibilities in tech."
     ],
     images: [
-    "/images/leadership/techsavvy-1.png",
-    "/images/leadership/techsavvy-2.png",
-    "/images/leadership/techsavvy-3.png"
+    "/images/leadership/techsavvy-1.jpg",
+    "/images/leadership/techsavvy-2.jpg",
+    "/images/leadership/techsavvy-3.jpg",
+    "/images/leadership/techsavvy-4.jpg",
+    "/images/leadership/techsavvy-5.jpg",
+    "/images/leadership/techsavvy-6.jpg"
     ],
     },
     {
@@ -155,7 +161,7 @@ const leadershipList: LeadershipData[] = [
     preview: "Taught design fundamentals and Photoshop to 30+ participants across Indonesia",
     description: [
     "Ever tried explaining design hierarchy to someone who's never touched Photoshop? That was my challenge when I spoke at the 'Transformer 6.0' webinar for UKM Riset dan Karya Ilmiah Heuri Cosmos. I had 30+ participants from across Indonesia eager to learn graphic design fundamentals - no pressure, right?",
-    "I delivered comprehensive training covering design principles and hands-on Photoshop tutorials, then got to play judge for their design challenge competition. Watching participants go from 'I don't know what kerning is' to creating genuinely creative solutions was incredibly rewarding. The best part? Providing constructive feedback that actually helped them improve their visual problem-solving skills."
+    "I delivered comprehensive training covering design principles and hands-on Photoshop tutorials, then got to play judge for their design challenge competition. Watching participants go from 'I don't know what white space is' to creating creative designs was incredibly rewarding."
     ],
     images: [
     "/images/leadership/design-workshop-1.png",
@@ -168,18 +174,22 @@ const leadershipList: LeadershipData[] = [
     title: "Mentor - University Orientation Program",
     aspect: "Student Mentoring & Leadership",
     year: "2024",
-    preview: "Mentored 20 freshmen through 7-day university orientation with 'Glorious Collaboration' theme",
+    preview: "Mentored 20 new students through 7-day university orientation with 'Glorious Collaboration' theme",
     description: [
-    "Remember your first week of university? That mix of excitement and 'oh no, I have no idea what I'm doing'? I got to guide 20 freshmen through exactly that experience during Universitas Pertamina's orientation program, helping them navigate the transition from high school to college life.",
-    "For 7 days, I was their go-to person for everything - from 'Where's the library?' to 'How do I not fail my first semester?' The theme was 'Glorious Collaboration: Building a Future with Integrity and Resilience,' but really it was about making sure these students felt supported and confident enough to tackle their academic journey. Seeing their transformation from nervous newbies to excited university students was honestly the highlight of my year."
+    "Remember your first week of university? That mix of excitement and 'oh no, I have no idea what I'm doing?'",
+    "I got to guide 20 new students through exactly that experience during Universitas Pertamina's orientation program, helping them find their way through the transition from high school to college life.",
+    "For 7 days, I was their go-to person for everything - from 'Where's the library?' to 'How do I not fail my first semester?' It was about making sure these students felt supported and confident enough to tackle their academic journey.",
     ],
     images: [
-    "/images/leadership/mentor-1.png",
-    "/images/leadership/mentor-2.png",
-    "/images/leadership/mentor-3.png"
+    "/images/leadership/mentor-1.jpg",
+    "/images/leadership/mentor-2.jpg",
+    "/images/leadership/mentor-3.jpg",
+    "/images/leadership/mentor-4.jpg",
+    "/images/leadership/mentor-5.jpg",
+    "/images/leadership/mentor-6.jpg",
+    "/images/leadership/mentor-7.jpg"
     ],
-    },
-
+    }
 ];
 
 
