@@ -145,12 +145,12 @@ const leadershipList: LeadershipData[] = [
     "I explained everything from Indonesia's technology to future challenges like job automation and job pitching. It reminded me why I love sharing knowledge: seeing young minds get excited about the endless possibilities in tech."
     ],
     images: [
-    "/images/leadership/techsavvy-1.jpg",
-    "/images/leadership/techsavvy-2.jpg",
-    "/images/leadership/techsavvy-3.jpg",
-    "/images/leadership/techsavvy-4.jpg",
-    "/images/leadership/techsavvy-5.jpg",
-    "/images/leadership/techsavvy-6.jpg"
+    "/images/leadership/techsavvy-1.JPG",
+    "/images/leadership/techsavvy-2.JPG",
+    "/images/leadership/techsavvy-3.JPG",
+    "/images/leadership/techsavvy-4.JPG",
+    "/images/leadership/techsavvy-5.JPG",
+    "/images/leadership/techsavvy-6.JPG"
     ],
     },
     {
@@ -181,21 +181,18 @@ const leadershipList: LeadershipData[] = [
     "For 7 days, I was their go-to person for everything - from 'Where's the library?' to 'How do I not fail my first semester?' It was about making sure these students felt supported and confident enough to tackle their academic journey.",
     ],
     images: [
-    "/images/leadership/mentor-1.jpg",
-    "/images/leadership/mentor-2.jpg",
-    "/images/leadership/mentor-3.jpg",
-    "/images/leadership/mentor-4.jpg",
-    "/images/leadership/mentor-5.jpg",
-    "/images/leadership/mentor-6.jpg",
-    "/images/leadership/mentor-7.jpg"
+    "/images/leadership/mentor-1.JPG",
+    "/images/leadership/mentor-2.JPG",
+    "/images/leadership/mentor-3.JPG",
+    "/images/leadership/mentor-4.JPG",
+    "/images/leadership/mentor-5.JPG",
+    "/images/leadership/mentor-6.JPG",
+    "/images/leadership/mentor-7.JPG"
     ],
     }
 ];
 
-
-
 // Image Carousel Component
-// Upgrade ImageCarousel dengan animasi Cover Flow bergaya macOS
 const ImageCarousel = ({ images }: { images: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPanning, setIsPanning] = useState(false);
