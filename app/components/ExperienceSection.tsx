@@ -25,29 +25,44 @@ interface ExperienceData {
 
 const experienceData: ExperienceData[] = [
   {
-    id: "HalalLens",
-    company: "Halal Lens",
-    position: "Project Leader",
-    location: "Universitas Pertamina",
-    period: "February 2025 - June 2025",
-    preview:
-      "Led 5-member team developing halal food verification mobile app",
-    description: [
-      "First, thanks to my Slytherin teammates for their collaboration on the HalalLens project. HalalLens is a final project for Mobile Development course. This application is designed to check the halal status of food and beverage products through barcode scanning and OCR technology. \n The app addresses challenges Muslim consumers face in verifying halal products, especially when traveling or dealing with foreign language labels, by providing accessible and reliable verification solutions.",
-      "Our app features a comprehensive set of tools including a barcode scanner for instant halal verification, OCR technology to verification through ingredient labels, accessibility options with voice navigation for visually impaired users, and a history tracking system for convenient reference to previously scanned products. These integrated features create a seamless experience for Muslim consumers seeking reliable halal product verification.",
-    ],
-    responsibilities: [
-      "Coordinated requirement gathering through artifact research, user interviews, and survey analysis",
-      "Managed complete project lifecycle from initial research phase to development",
-      "Facilitated team collaboration and ensured adherence to user-centered design principles",
-    ],
-    skills: ["Project Managements", "User Research & Requirements Gathering", "UI/UX Design Principles", "Agile Development"],
-    achievements: [
-      "Successfully delivered project within 4-month timeline with 5-member team",
-      "We Won 'Best UI/UX Design' award at final project exhibition"
-    ],
-    images: ["/images/experiences/halallens-1.png", "/images/experiences/halallens-2.png", "/images/experiences/halallens-3.png", "/images/experiences/halallens-4.png", "/images/experiences/halallens-5.png", "/images/experiences/halallens-6.png", "/images/experiences/halallens-7.png"],
-  },
+id: "HalalLens",
+company: "Halal Lens",
+position: "Project Leader",
+location: "Universitas Pertamina",
+period: "February 2025 - June 2025",
+preview: "Led 5-member team to build halal food scanner app - won Best UI/UX Design award",
+description: [
+"Ever tried reading ingredient labels in a foreign language while wondering if your food is halal? That's exactly the problem my team and I tackled with HalalLens. Shoutout to my amazing Slytherin teammates who made this mobile app dream come to life - couldn't have done it without their dedication.",
+"We built a comprehensive halal verification app with barcode scanning, OCR for ingredient reading, voice navigation for accessibility, and scan history tracking. The whole experience taught me that great project leadership isn't just about timelines - it's about keeping everyone motivated while building something that actually solves real problems for Muslim consumers worldwide."
+],
+responsibilities: [
+"Led requirement gathering through user interviews, surveys, and market research",
+"Managed 4-month project timeline from concept to working prototype",
+"Coordinated 5-person team using agile methods and user-centered design"
+],
+skills: [
+"Project Management",
+"User Research",
+"UI/UX Design",
+"Agile/Scrum",
+"Team Leadership"
+],
+achievements: [
+"Won 'Best UI/UX Design' award at university project exhibition",
+"Become 'Most Inclusive Application' for accessibility features",
+"Delivered working app in 4 months with zero timeline delays",
+"Successfully managed cross-functional team of 5 developers and designers"
+],
+images: [
+"/images/experiences/halallens-1.png",
+"/images/experiences/halallens-2.png",
+"/images/experiences/halallens-3.png",
+"/images/experiences/halallens-4.png",
+"/images/experiences/halallens-5.png",
+"/images/experiences/halallens-6.png",
+"/images/experiences/halallens-7.png"
+],
+},
   {
   id: "TryFitBar",
   company: "TRYFITBAR",
@@ -132,12 +147,7 @@ preview: "Doubled Indonesia's biggest design community from 9K to 19K followers 
 description: [
 "UIUXINDO is Indonesia's go-to design community - think workshops, events, and everything UI/UX. I spent 2 years figuring out what makes designers tick on social media and turning those insights into content that actually works."
 ],
-responsibilities: [
-// "Crunched engagement data to boost event sign-ups and community participation",
-// "Built analytics dashboards in Meta Business Suite that everyone could actually understand",
-// "Ran A/B tests on content to see what clicked with the design community",
-// "Turned messy social media metrics into clear growth strategies"
-],
+responsibilities: [],
 skills: [
 "Data Analysis",
 "Content Strategy",
@@ -183,11 +193,7 @@ achievements: [
 "40+ students who can now write decent SQL queries",
 "Created supporting study materials"
 ],
-images: [
-"/images/experiences/uniper-ta-1.png",
-"/images/experiences/uniper-ta-2.png",
-"/images/experiences/uniper-ta-3.png"
-],
+images: [],
 },
 {
 id: "SMKTIBazma",

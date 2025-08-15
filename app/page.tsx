@@ -6,6 +6,7 @@ import { BlurIn } from './components/BlurIn';
 import VariableFontText from './components/variable-font-and-cursor'
 import ProjectsFolder from './components/ProjectsFolder';
 import ExperienceFolder from './components/ExperienceFolder';
+import LeadershipFolder from './components/LeadershipFolder';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -64,9 +65,14 @@ export default function Home() {
         lg: "w-12 h-12" 
       }} />
 
+      <LeadershipFolder isMobile={true} size={{ 
+        sm: "w-12 h-12", 
+        md: "w-12 h-12", 
+        lg: "w-12 h-12" 
+      }} />
+
       {/* Folder-folder lainnya */}
       {[
-        "Leadership, Public Speaking & Committee", 
         "Achievements",
         "Education and Skills"
       ].map((project, index) => (

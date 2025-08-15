@@ -109,8 +109,8 @@ const projectsList: ProjectData[] = [
     "For my AI final project, I used genetic algorithms to solve a real conservation problem: how to create optimal habitat corridors between Sebangau National Park and Bukit Baka Bukit Raya Forest. The goal was to help orangutans move safely between forest patches without human interference. It's amazing how computational intelligence can contribute to saving species that are so close to extinction."
     ],
     images: [
-    "/images/projects/orangutan-1.png",
-    "/images/projects/orangutan-2.png",
+    "/images/projects/orangutan-1.jpg",
+    "/images/projects/orangutan-2.jpg",
     "/images/projects/orangutan-3.png"
     ],
     documentLink: "/documents/Orangutan Habitat_Artificial Intelligence.pdf",
@@ -149,7 +149,7 @@ const projectsList: ProjectData[] = [
       ],
       externalLinks: [
         {
-          title: "Kaggle",
+          title: "View Full Project on Kaggle",
           url: "https://www.kaggle.com/code/mandayash/customer-segmentation-with-k-means-clustering",
           icon: "/icons/kaggle.png"
         }
@@ -502,24 +502,29 @@ const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
                 </div>
 
                 {/* Project Links Section */}
-                {selectedProject && (selectedProject.documentLink || selectedProject.externalLinks?.length > 0) && (
+                {selectedProject && selectedProject.documentLink && (
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold mb-3 text-gray-800 font-sf">
                       Project Resources
                     </h3>
                     <div className="flex flex-wrap gap-3">
-                      {/* PDF Report Button */}
-                      {selectedProject.documentLink && (
-                        <MacOSLinkButton
-                          title="View Full Report"
-                          url={selectedProject.documentLink}
-                          icon="pdf"
-                          isPrimary={true}
-                        />
-                      )}
-                      
-                      {/* External Links */}
-                      {selectedProject.externalLinks?.map((link, index) => (
+                      <MacOSLinkButton
+                        title="View Full Report"
+                        url={selectedProject.documentLink}
+                        icon="pdf"
+                        isPrimary={true}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {selectedProject && selectedProject.externalLinks && selectedProject.externalLinks.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-gray-800 font-sf">
+                      Project Resources
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {selectedProject.externalLinks.map((link, index) => (
                         <MacOSLinkButton
                           key={index}
                           title={link.title}
