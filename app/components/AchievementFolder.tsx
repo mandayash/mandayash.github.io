@@ -1,47 +1,59 @@
 "use client";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LeadershipSection from './LeadershipSections';
+import AchievementSection from './AchievementSection';
 
-const LeadershipFolder = ({ 
+const AchievementFolder = ({ 
   isMobile = false,
   size = { sm: "w-12 h-12", md: "w-12 h-12", lg: "w-12 h-12" }
 }: { 
   isMobile?: boolean,
   size?: { sm: string, md: string, lg: string }
 }) => {
-  const [showLeadershipModal, setShowLeadershipModal] = useState(false);
+  const [showAchievementModal, setShowAchievementModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleOpenLeadership = (e: React.MouseEvent) => {
+  const handleOpenAchievement = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setShowLeadershipModal(true);
+    setShowAchievementModal(true);
   };
 
-  const handleCloseLeadership = () => {
-    setShowLeadershipModal(false);
+  const handleCloseAchievement = () => {
+    setShowAchievementModal(false);
   };
 
   return (
     <>
-      {/* Activity Folder */}
+      {/* Achievement Folder */}
       <motion.div
         className="flex flex-col items-center cursor-pointer relative block"
-        onClick={handleOpenLeadership}
+        onClick={handleOpenAchievement}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
-        <div className={`${isMobile ? 'w-12 h-12 mb-1' : 'w-16 h-16 mb-2'} relative flex items-center justify-center`}>
+        <div className={`${isMobile ? size.sm : `${size.sm} md:${size.md} lg:${size.lg}`} mb-2 relative flex items-center justify-center`}>
           <motion.img
             src="/icons/folder.png"
-            alt="Experience Folder Icon"
+            alt="Achievement Folder Icon"
             className="w-full h-full"
             animate={isHovered ? { y: -3 } : { y: 0 }}
             transition={{ duration: 0.2 }}
             draggable={false}
           />
+          
+          {/* Sparkle effect when hovered - preserved from original */}
+          {isHovered && (
+            <motion.div
+              className="absolute -top-1 -right-1 w-3 h-3"
+              initial={{ scale: 0, rotate: 0 }}
+              animate={{ scale: 1, rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="text-yellow-400 text-xs">✨</span>
+            </motion.div>
+          )}
         </div>
         <motion.span 
           className={`${isMobile ? 'text-xs' : 'text-sm'} text-center max-w-15 leading-tight font-sf`}
@@ -50,14 +62,13 @@ const LeadershipFolder = ({
             textShadow: "0px 0px 3px rgba(255,255,255,0.7)" 
           } : {}}
         >
-          Leadership, Public Speaking, <br />
-          and Committee
+          Achievement
         </motion.span>
       </motion.div>
 
-      {/* Activity Modal */}
+      {/* Achievement Modal */}
       <AnimatePresence>
-        {showLeadershipModal && (
+        {showAchievementModal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -66,7 +77,7 @@ const LeadershipFolder = ({
             className="z-50"
             onClick={(e) => e.stopPropagation()}
           >
-            <LeadershipSection onClose={handleCloseLeadership} />
+            <AchievementSection onClose={handleCloseAchievement} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -74,4 +85,4 @@ const LeadershipFolder = ({
   );
 };
 
-export default LeadershipFolder;
+export default AchievementFolder;

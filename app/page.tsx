@@ -7,6 +7,7 @@ import VariableFontText from './components/variable-font-and-cursor'
 import ProjectsFolder from './components/ProjectsFolder';
 import ExperienceFolder from './components/ExperienceFolder';
 import LeadershipFolder from './components/LeadershipFolder';
+import AchievementFolder from './components/AchievementFolder';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,9 +72,15 @@ export default function Home() {
         lg: "w-12 h-12" 
       }} />
 
+      <AchievementFolder isMobile={true} size={{ 
+        sm: "w-12 h-12", 
+        md: "w-12 h-12", 
+        lg: "w-12 h-12" 
+      }} />
+
       {/* Folder-folder lainnya */}
       {[
-        "Achievements",
+        
         "Education and Skills"
       ].map((project, index) => (
         <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
@@ -114,11 +121,15 @@ export default function Home() {
               md: "w-12 h-12", 
               lg: "w-12 h-12" 
             }} />
+
+            <AchievementFolder isMobile={true} size={{ 
+              sm: "w-12 h-12", 
+              md: "w-12 h-12", 
+              lg: "w-12 h-12" 
+            }} />
             
             {/* Folder-folder lainnya */}
             {[
-              { name: "Leadership, Public Speaking & Committee", icon: "/icons/folder.png" },
-              { name: "Achievements", icon: "/icons/folder.png" },
               { name: "Education and Skills", icon: "/icons/folder.png" }
             ].map((item, index) => (
               <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">

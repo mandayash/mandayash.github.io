@@ -22,6 +22,20 @@ interface ExperienceData {
   //   highlights: string[];
   // };
 }
+// Helper function to render paragraphs with bold text
+const renderFormattedText = (text: string) => {
+  if (!text.includes('**')) return text;
+  
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      // This is a bold part
+      const boldText = part.slice(2, -2); // Remove ** from start and end
+      return <span key={index} className="font-bold">{boldText}</span>;
+    }
+    return part;
+  });
+};
 
 const experienceData: ExperienceData[] = [
   {
@@ -32,8 +46,8 @@ location: "Universitas Pertamina",
 period: "February 2025 - June 2025",
 preview: "Led 5-member team to build halal food scanner app - won Best UI/UX Design award",
 description: [
-"Ever tried reading ingredient labels in a foreign language while wondering if your food is halal? That's exactly the problem my team and I tackled with HalalLens. Shoutout to my amazing Slytherin teammates who made this mobile app dream come to life - couldn't have done it without their dedication.",
-"We built a comprehensive halal verification app with barcode scanning, OCR for ingredient reading, voice navigation for accessibility, and scan history tracking. The whole experience taught me that great project leadership isn't just about timelines - it's about keeping everyone motivated while building something that actually solves real problems for Muslim consumers worldwide."
+"Ever tried reading ingredient labels in a foreign language while wondering if your food is halal? That's exactly the problem my team and I tackled with HalalLens. Shoutout to my amazing **Slytherin** teammates who made this mobile app dream come to life - couldn't have done it without their dedication.",
+"We built a comprehensive **halal verification app with barcode scanning, OCR for ingredient reading, voice navigation for accessibility, and scan history tracking**. The whole experience taught me that great project leadership isn't just about timelines - it's about keeping everyone motivated while building something that actually solves real problems for Muslim consumers worldwide."
 ],
 responsibilities: [
 "Led requirement gathering through user interviews, surveys, and market research",
@@ -71,8 +85,8 @@ images: [
   period: "April 2025 - July 2025",
   preview: "Brought an inactive UAE food brand back to life with 105% view growth and 50+ strategic content pieces",
   description: [
-    "TRYFITBAR's social media had been inactive for months. I jumped in to rebuild their digital presence from scratch, focusing on authentic engagement.",
-    "My approach was simple: analyze what went wrong, create content that actually works, and use data to guide every decision. The result? A brand that went from invisible to engaging in just 4 months."
+    "TRYFITBAR's social media had been **inactive** for months. I jumped in to rebuild their digital presence from scratch, focusing on authentic engagement.",
+    "My approach was simple: analyze what went wrong, create content that actually works, and use data to guide every decision. The result? **A brand that went from invisible to engaging in just 4 months.**"
   ],
   responsibilities: [
     "Reactivated Instagram and Facebook accounts with strategic content planning",
@@ -110,7 +124,7 @@ period: "December 2024 - May 2025",
 preview: "Built CRM web app for Indonesia's LRT system - handling 30+ admins and thousands of user data points",
 description: [
 "Meetsin.ID builds digital solutions for Indonesian companies. I joined their team to create a CRM web app for LRT Sumatera Selatan - basically helping train operators manage their customer data better.",
-"My job was making sure the interface actually worked for real people. Admin staff needed to handle tons of user data without wanting to throw their computers out the window. 😅"
+"**My job was making sure the interface actually worked for real people.** Admin staff needed to handle tons of user data without wanting to throw their computers out the window. 😅"
 ],
 responsibilities: [
 "Built 15+ UI components for the CRM dashboard using React.js",
@@ -137,13 +151,14 @@ images: [
 "/images/experiences/meetsin-3.png"
 ],
 },
+
 {
 id: "UIUXINDO",
 company: "UIUXINDO",
 position: "Junior Data Analyst & Content Strategist",
 location: "Jakarta, Indonesia",
 period: "May 2023 - April 2025",
-preview: "Doubled Indonesia's biggest design community from 9K to 19K followers using data-smart content strategy",
+preview: "Doubled one of Indonesia's design community from 9K to 19K followers using data-smart content strategy",
 description: [
 "UIUXINDO is Indonesia's go-to design community - think workshops, events, and everything UI/UX. I spent 2 years figuring out what makes designers tick on social media and turning those insights into content that actually works."
 ],
@@ -165,6 +180,7 @@ images: [
 "/images/experiences/uiuxindo-2.png"
 ],
 },
+
 {
 id: "UnipertaminaTA",
 company: "Universitas Pertamina",
@@ -173,7 +189,7 @@ location: "Jakarta, Indonesia",
 period: "August 2024 - January 2025",
 preview: "Hit 90% pass rate teaching Oracle DB and SQL to 40+ students who actually didn't hate databases by the end 🥰",
 description: [
-"I helped 40+ computer science students wrap their heads around Oracle Database and SQL without losing their sanity.",
+"I helped 40+ computer science students wrap their heads around Oracle Database and SQL without losing their peace of mind.",
 "My approach was simple: make scary database concepts feel less scary. I created extra materials, ran lab sessions, and basically became the person students came to when their queries wouldn't work."
 ],
 responsibilities: [
@@ -195,6 +211,7 @@ achievements: [
 ],
 images: [],
 },
+
 {
 id: "SMKTIBazma",
 company: "SMK TI Bazma",
@@ -204,7 +221,7 @@ period: "August 2023 - October 2023",
 preview: "Introduced high schoolers to UI/UX design - turned tech-curious teenagers into mini design thinkers",
 description: [
 "SMK TI Bazma is a tech-focused vocational school in Bogor. ",
-"The challenge? Making design theory interesting for teenagers while teaching them skills they'd actually use. I focused on hands-on projects and real-world examples they could relate to."
+"The challenge? **Making design theory interesting for teenagers while teaching them skills they'd actually use.** I focused on hands-on projects and real-world examples they could relate to."
 ],
 responsibilities: [
 "Broke down UI/UX basics like design hierarchy and visual principles for beginners",
@@ -583,8 +600,10 @@ const ExperienceSection = ({ onClose }: { onClose: () => void }) => {
                   </h1>
                   <div className="text-gray-600 leading-relaxed space-y-4">
                     {selectedExperience.description.map((paragraph, index) => (
-                      <p key={index} className="text-justify font-sf">{paragraph}</p>
-                    ))} 
+                      <p key={index} className="text-justify font-sf">
+                        {renderFormattedText(paragraph)}
+                      </p>
+                    ))}
                   </div>
                 </div>
 

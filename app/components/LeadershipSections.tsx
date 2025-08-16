@@ -20,6 +20,20 @@ interface LeadershipData {
   }[];  // Array links eksternal (optional)
 }
 
+const renderFormattedText = (text: string) => {
+  if (!text.includes('**')) return text;
+  
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      // This is a bold part
+      const boldText = part.slice(2, -2); // Remove ** from start and end
+      return <span key={index} className="font-bold">{boldText}</span>;
+    }
+    return part;
+  });
+};
+
 // Link button component dengan macOS style
 
     const MacOSLinkButton = ({ 
@@ -141,7 +155,7 @@ const leadershipList: LeadershipData[] = [
     year: "2024",
     preview: "Presented tech trends to IT students at SMK TI Bazma school orientation",
     description: [
-    "What's cooler than talking about AI, AR/VR, and IoT to a room full of excited IT students 🧑‍💻👩‍💻? That's exactly what I did at SMK TI Bazma's school orientation, presenting 'Tech Savvy Generation: Preparing Young People for the Digital Era' to students who were just starting their tech journey.",
+    "What's cooler than talking about AI, AR/VR, and IoT to a room full of excited IT students 🧑‍💻👩‍💻? That's exactly what I did at SMK TI Bazma's school orientation, presenting **'Tech Savvy Generation: Preparing Young People for the Digital Era'** to students who were just starting their tech journey.",
     "I explained everything from Indonesia's technology to future challenges like job automation and job pitching. It reminded me why I love sharing knowledge: seeing young minds get excited about the endless possibilities in tech."
     ],
     images: [
@@ -527,9 +541,11 @@ const LeadershipSection = ({ onClose }: { onClose: () => void }) => {
                   </h1>
                   <div className="text-gray-600 leading-relaxed space-y-4">
                     {selectedLeadership.description.map((paragraph, index) => (
-                      <p key={index} className="text-justify font-sf">{paragraph}</p>
+                        <p key={index} className="text-justify font-sf">
+                        {typeof paragraph === 'string' ? renderFormattedText(paragraph) : paragraph}
+                        </p>
                     ))}
-                  </div>
+                    </div>
                 </div>
 
                 {selectedLeadership && selectedLeadership.externalLinks && selectedLeadership.externalLinks.length > 0 && (

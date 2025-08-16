@@ -20,6 +20,20 @@ interface ProjectData {
   }[];  // Array links eksternal (optional)
 }
 
+const renderFormattedText = (text: string) => {
+  if (!text.includes('**')) return text;
+  
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      // This is a bold part
+      const boldText = part.slice(2, -2); // Remove ** from start and end
+      return <span key={index} className="font-bold">{boldText}</span>;
+    }
+    return part;
+  });
+};
+
 // Link button component dengan macOS style
 
     const MacOSLinkButton = ({ 
@@ -88,7 +102,7 @@ const projectsList: ProjectData[] = [
     year: "2025",
     preview: "Built AI model to analyze Indonesian social media discussions on green economy with 92.6% accuracy",
     description: [
-    "What do Indonesians really think about renewable energy and green economy? My team and I dove into 1,095 tweets to find out, using machine learning to decode both what people talk about and how they feel about it.",
+    "What do Indonesians really think about renewable energy and green economy? My team and I dove into **1,095 tweets** to find out, using machine learning to decode both what people talk about and how they feel about it.",
     "We built a multi-task learning model using IndoBERT that could simultaneously figure out discussion topics and sentiment. The cool part? We hit 92.6% accuracy on aspect classification and 82.1% on sentiment analysis. Shoutout to my amazing teammates who made this project possible - teamwork definitely made the dream work on this one!"
     ],
     images: [
@@ -496,7 +510,9 @@ const ProjectsSection = ({ onClose }: { onClose: () => void }) => {
                   </h1>
                   <div className="text-gray-600 leading-relaxed space-y-4">
                     {selectedProject.description.map((paragraph, index) => (
-                      <p key={index} className="text-justify font-sf">{paragraph}</p>
+                      <p key={index} className="text-justify font-sf">
+                        {renderFormattedText(paragraph)}
+                      </p>
                     ))}
                   </div>
                 </div>
