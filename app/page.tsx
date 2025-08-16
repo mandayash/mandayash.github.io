@@ -8,6 +8,7 @@ import ProjectsFolder from './components/ProjectsFolder';
 import ExperienceFolder from './components/ExperienceFolder';
 import LeadershipFolder from './components/LeadershipFolder';
 import AchievementFolder from './components/AchievementFolder';
+import EduFolder from './components/EduFolder';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,10 +79,15 @@ export default function Home() {
         lg: "w-12 h-12" 
       }} />
 
+      <EduFolder isMobile={true} size={{ 
+        sm: "w-12 h-12", 
+        md: "w-12 h-12", 
+        lg: "w-12 h-12" 
+      }} />
+
       {/* Folder-folder lainnya */}
       {[
         
-        "Education and Skills"
       ].map((project, index) => (
         <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
           <img
@@ -127,22 +133,14 @@ export default function Home() {
               md: "w-12 h-12", 
               lg: "w-12 h-12" 
             }} />
-            
+
+            <EduFolder isMobile={true} size={{ 
+              sm: "w-12 h-12", 
+              md: "w-12 h-12", 
+              lg: "w-12 h-12" 
+            }} />
+            </div>
             {/* Folder-folder lainnya */}
-            {[
-              { name: "Education and Skills", icon: "/icons/folder.png" }
-            ].map((item, index) => (
-              <div key={index} className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105">
-                <img
-                  src={item.icon}
-                  alt={`${item.name} Icon`}
-                  className="w-12 h-12 mb-1"
-                  draggable={false}
-                />
-                <span className="text-xs text-center leading-tight font-sf">{item.name}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
 
